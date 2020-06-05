@@ -1,0 +1,81 @@
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
+<view slot="content">
+<text class='cuIcon-edit'></text>
+信息编辑
+</view>
+</cu-custom>
+<view class='form-tip'>首次登入将自动跳转至该页面进行信息完善</view>
+<view class="tip-box {{tip?'tip-box-animation':'none'}}">
+  <text class='cuIcon-roundclose'></text> 表单不能为空或输入格式有误！
+</view>
+<view class='form-Box'>
+
+
+  <view class="cu-form-group form-box">
+    <text class='cuIcon-people vertical'></text>
+    <text>   </text>
+		<!-- <text class="title vertical">姓名</text> -->
+		<input placeholder="真实姓名" bindinput='watchName' data-index='0'></input>
+	</view>
+
+  <view class="cu-form-group form-box">
+    <text class='cuIcon-creative vertical'></text>
+    <text>   </text>
+		<!-- <text class="title vertical">专业</text> -->
+		<input placeholder="所在专业" bindinput='watchName' data-index='1'></input>
+	</view>
+
+
+
+
+    <view class="cu-form-group form-box">
+    <text class='cuIcon-mobile vertical'></text>
+    <text>   </text>
+		<!-- <text class="title vertical">电话</text> -->
+		<input type='number' placeholder="电话号码"bindinput='watchName' data-index='2'></input>
+	</view>
+ 
+    <view class="cu-form-group form-box">
+    <text class='cuIcon-mail vertical'></text>
+    <text>   </text>
+		<!-- <text class="title vertical">邮箱</text> -->
+		<input placeholder="电子邮箱，用于推送学习记录"bindinput='watchName' data-index='3'></input>
+	</view>
+
+  	<view class="cu-form-group form-box">
+    <view class='sex-label-box'>
+        <text class='cuIcon-male vertical sex-icon '></text>
+		<text class=" vertical sex-label">性别</text>
+    </view>
+
+		<switch class="switch-sex" checked bindtap='sexSwitch' data-index='4'></switch>
+	</view>
+
+	<view class="cu-form-group  form-box">
+		<view class="title">年级选择</view>
+		<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+			<view class="picker">
+				{{index?picker[index]:'尚未选择'}}
+			</view>
+		</picker>
+	</view>
+
+
+  <button bindtap='submit' class="submit-btn cu-btn block bg-gradual-blue margin-tb-sm lg">
+    <view wx:if="{{submiting}}">
+    <text class="cuIcon-loading2 iconfont-spin"></text><text>提交中</text>
+    </view>
+
+    <text  wx:if="{{!submiting}}">
+     提交
+    </text>
+  </button>
+
+
+</view>
+
+
+<view class='circle1'>
+</view>
+<view class='circle2'>
+</view>

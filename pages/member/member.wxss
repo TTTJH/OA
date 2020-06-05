@@ -1,0 +1,65 @@
+.member-Box{
+  margin-top: 60rpx;
+}
+.member-box{
+  z-index: 100;
+  position: relative;
+  border-radius: 35rpx;
+  width: 90vw;
+  height: 20vh;
+  margin: 60rpx auto;
+}
+.member-box image{
+width:175rpx;
+height:175rpx;
+position:absolute;
+right:65rpx;
+top:-15rpx;
+border-radius:50%;
+border: 2px solid black;
+
+box-shadow: 0 70rpx 190rpx black;
+}
+.text-f0f0f0{
+  color: #f0f0f0;
+}
+
+.text-unhighlight{
+  font-size: 22rpx;
+}
+
+.member-class{
+  position: absolute;
+  bottom: 25rpx;
+  left: 30rpx;
+}
+
+.member-name,
+.member-icon{
+  vertical-align: middle;
+}
+
+.circle1{
+  z-index: 0;
+  width: 70vw;
+  height: 70vw;
+  position: absolute;
+  left: -35vw;
+  bottom: -20px;
+  border-radius: 50%;
+  /* background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); */
+  background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+}
+
+
+.circle2{
+  z-index: 0;
+  width: 70vw;
+  height: 70vw;
+  position: absolute;
+  right: -35vw;
+  top: 30px;
+  border-radius: 50%;
+  /* background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); */
+  background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+}

@@ -1,0 +1,116 @@
+/* @import "/colorui/main.wxss";
+@import "/colorui/icon.wxss"; */
+.container{
+  height: 100vh;
+  position: relative;
+}
+
+
+.cu-bar{
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  margin: 0;
+}
+.txt-ellipsis{
+  overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+.index-Box{
+  position: relative;
+  width: 90vw;
+  min-height: 60vh;
+  margin: 60rpx auto;
+  /* margin-top: 50rpx; */
+  z-index: 100;
+}
+.index-box{
+  position: relative;
+  border-radius: 30rpx;
+  /* margin: 3vw 0; */
+}
+
+.box1{
+    position: relative;
+  width: 48%;
+  display: inline-block;
+}
+.box2{
+  position: relative;
+  width: 48%;
+  display: inline-block;
+}
+.box{
+  display: flex;
+  justify-content: space-between;
+}
+.index-box-1{
+  width: 100%;
+}
+.index-box-5{
+  margin: 3vw 0;
+}
+
+.index-box-3{
+  margin: 3vw 0;
+}
+
+.index-box-4{
+  margin: 3vw 0;
+}
+
+.index-box-2{
+  margin: 3vw 0;
+}
+
+.index-box-4{
+  /* top: -48rpx; */
+}
+
+.text-ececec{
+  color: #ececec;
+}
+
+.index-bottom-txt{
+  vertical-align: middle;
+  z-index: 10;
+}
+
+.index-bottom-gif{
+   z-index: 10;
+  vertical-align: middle;
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.circle1{
+  z-index: 0;
+  width: 70vw;
+  height: 70vw;
+  position: fixed;
+  left: -35vw;
+  bottom: 30px;
+  border-radius: 50%;
+  background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+}
+
+
+.circle2{
+  z-index: 0;
+  width: 70vw;
+  height: 70vw;
+  position: fixed;
+  right: -35vw;
+  top: 30px;
+  border-radius: 50%;
+  background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+}
+.main-icon-lg{
+  font-size: 50rpx;
+}
+
+/*重写*/
+.margin-top-lg{
+  margin-top: 73rpx;
+}

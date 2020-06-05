@@ -1,0 +1,136 @@
+/* @import "/colorui/main.wxss";
+@import "/colorui/icon.wxss"; */
+.mine-title{
+  margin-top: 5vw;
+  margin-left: 7vw;
+}
+
+.text-highlight{
+  font-weight: bold;
+  font-size: 42rpx;
+  vertical-align: middle;
+    color: #69606b;
+}
+
+.text-highlight2{
+    color: #69606b;
+  font-size: 42rpx;
+  /* color: #8799a3; */
+  vertical-align: middle;
+}
+.roller-Box{
+  width: 100vw;
+  height: 13vh;
+  margin-bottom: 5vh;
+  position: relative;
+}
+.roller{
+  z-index: 100;
+  border-top-left-radius: 50rpx;
+  border-bottom-left-radius: 50rpx;
+  width: 95vw;
+  margin: 30rpx 0;
+  right: 0;
+  position: absolute;
+  height: 13vh;
+  overflow-x: auto;
+  /* background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); */
+}
+
+.roller-content{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 30rpx;
+  transform: translateY(-50%);
+  height: 100%;
+  width: 200vw;
+  /* background-color: pink; */
+}
+
+.roller-box{
+  /* display: inline-block; */
+  /* height: 50%; */
+  text-align: center;
+  margin: 0 5vw;
+}
+
+.roller-box text{
+  font-size: 50rpx;
+}
+
+.bg-f0f0f0{
+  background-color: #f0f0f0;
+}
+
+.item-padding{
+  padding: 20rpx 50rpx;
+}
+
+.content-padding{
+  padding: 25rpx;
+}
+
+.radious-sm{
+  border-radius: 20rpx;
+}
+
+.message-outerBox{
+  width: 95vw;
+  margin: 0 auto;
+  border-top-left-radius: 50rpx;
+    border-top-right-radius: 50rpx;
+  background-color: white;
+  padding-bottom: 150rpx;
+}
+
+.padding-top-sm{
+  padding-top: 30rpx;
+}
+
+.message-title{
+  font-size: 32rpx;
+  color: gray;
+}
+
+.message-time{
+  text-align: center;
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  color: gray;
+}
+
+.message-dayBox{
+  width: 90vw;
+  border-radius: 30rpx;
+  margin: 0 auto;
+  border: 1px solid #f0f0f0;
+}
+
+.avatar{
+  width: 130rpx;
+  height: 130rpx;
+  border: 2px solid white;
+  border-radius: 50%;
+  margin-bottom: 10rpx;
+}
+
+.vertical{
+  vertical-align: middle;
+}
+
+.login-btn{
+  vertical-align: middle;
+  display: inline-block;
+    width: 130rpx;
+  height: 130rpx;
+  border: 2px solid white;
+  border-radius: 50%;
+  margin-bottom: 10rpx;
+}
+
+.login-btn text{
+  font-size: 50rpx;
+  color: gray;
+}

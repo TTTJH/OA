@@ -1,0 +1,51 @@
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
+<view slot="content">
+<text class='cuIcon-file'></text>
+资源
+</view>
+</cu-custom>
+
+<view class="container">
+  <towxml nodes="{{article}}"/>
+</view>
+
+<!-- <view class='resource-Box'>
+
+          <view class=" resource-box bg-blue shadow-blur content content-padding radious-sm text-white">
+            <text class="margin-top">SQL教程 </text> <text class='cuIcon-roundright'></text>
+          </view>
+
+                    <view class=" resource-box bg-blue shadow-blur content content-padding radious-sm">
+            <text class="margin-top">CSS教程 </text> <text class='cuIcon-roundright'></text>
+          </view>
+
+                    <view class=" resource-box bg-blue shadow-blur content content-padding radious-sm">
+            <text class="margin-top">HTML教程 </text> <text class='cuIcon-roundright'></text>
+          </view>
+
+                    <view class=" resource-box bg-blue shadow-blur content content-padding radious-sm">
+            <text class="margin-top">MONGODB教程 </text> <text class='cuIcon-roundright'></text>
+          </view>
+          <view class=" resource-box bg-blue shadow-blur content content-padding radious-sm text-white">
+            <text class="margin-top">SQL教程 </text> <text class='cuIcon-roundright'></text>
+          </view>
+
+                    <view class=" resource-box bg-blue shadow-blur content content-padding radious-sm">
+            <text class="margin-top">CSS教程 </text> <text class='cuIcon-roundright'></text>
+          </view>
+
+                    <view class=" resource-box bg-blue shadow-blur content content-padding radious-sm">
+            <text class="margin-top">HTML教程 </text> <text class='cuIcon-roundright'></text>
+          </view>
+
+                    <view class=" resource-box bg-blue shadow-blur content content-padding radious-sm">
+            <text class="margin-top">MONGODB教程 </text> <text class='cuIcon-roundright'></text>
+          </view>
+</view> -->
+
+
+
+  <view class='circle1'>
+</view>
+<view class='circle2'>
+</view>

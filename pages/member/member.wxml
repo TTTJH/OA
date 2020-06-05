@@ -1,0 +1,54 @@
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
+<view slot="content">
+<text class='cuIcon-friend'></text>
+成员
+</view>
+</cu-custom>
+
+<view class='member-Box'>
+    <!-- <view class="padding-sm "> -->
+     <view class="member-box {{bgColor[2]}} padding radius shadow-blur">
+
+      <view class="text-lg member-name">胡一涵</view>
+      <text class="margin-top-sm text-Abc">实验室负责人</text>
+      <text class='cuIcon-friendfamous member-icon'></text>
+
+       <view class="margin-top-sm text-f0f0f0 text-unhighlight member-class">3G软件17-02</view>
+                     <image class='member-img' src='http://139.9.115.248/imgs/gif.gif'>
+              
+              </image>
+    </view>
+
+         <view class="member-box {{bgColor[4]}} padding radius shadow-blur">
+
+      <view class="text-lg  member-name">肖明珂</view>
+
+      <text class="margin-top-sm text-Abc">实验室负责人</text>
+      <text class='cuIcon-friendfamous  member-icon'></text>
+
+       <view class="margin-top-sm text-f0f0f0 text-unhighlight member-class">我能让你看透我？</view>
+                     <image class='member-img' src='http://139.9.115.248/imgs/gif.gif'>
+              
+              </image>
+    </view>
+
+    <view class=" member-box bg-gradual-orange padding radius shadow-blur">
+      <view class="text-lg  member-name">屠建昊</view>
+      <text class="margin-top-sm text-Abc">实验室外包仔</text>
+    <text class='cuIcon-people  member-icon'></text>
+
+       <view class="margin-top-sm text-f0f0f0 text-unhighlight member-class">3G软件17-02</view>
+                     <image class='member-img' src='http://139.9.115.248/imgs/gif.gif'>
+              
+              </image>
+    </view>
+
+
+
+    <!-- </view> -->
+</view>
+
+<view class='circle1'>
+</view>
+<view class='circle2'>
+</view>

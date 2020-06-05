@@ -1,0 +1,150 @@
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
+<view slot="content">
+<text class='cuIcon-text'></text>
+项目
+</view>
+</cu-custom>
+<!-- <view class='clearfix object-box bg-gradual-blue text-center'>
+  <view class='object-box-arrow'>
+  <text class='cuIcon-refresharrow'></text>
+</view>
+  <view class='object-box-title'>
+  今麦郎汇单管理系统
+  </view>
+
+  <view class='object-box-time'> 
+    2019.12.6
+  </view> 
+  
+  <view class='object-icon-Box'>
+    <view class='object-icon-box'>
+      <view>6</view>
+      <text class='cuIcon-file'></text>
+    </view>
+
+        <view class='object-icon-box'>
+      <view>8</view>
+      <text class='cuIcon-friend'></text>
+    </view>
+        <view class='object-icon-box'>
+      <view>45</view>
+      <text class='cuIcon-time'></text>
+    </view>
+  </view>
+    <view class='object-file-Box'>
+      <view class='object-file-box'>
+        <image class= src='/images/excel.png'></image>
+        <text class='object-file-name text-black'>项目参与人员名单</text>
+      </view>
+
+            <view class='object-file-box'>
+        <image class= src='/images/excel.png'></image>
+        <text class='object-file-name text-black'>项目参与人员名单</text>
+      </view>
+
+            <view class='object-file-box'>
+        <image class= src='/images/excel.png'></image>
+        <text class='object-file-name text-black'>项目参与人员名单</text>
+      </view>
+  </view>
+
+  <view class='objetc-member-avatar-Box'>
+  <image src='http://139.9.115.248/imgs/gif.gif'></image>
+    <image src='http://139.9.115.248/imgs/gif.gif'></image>
+      <image src='http://139.9.115.248/imgs/gif.gif'></image>
+        <image src='http://139.9.115.248/imgs/gif.gif'></image>
+          <image src='http://139.9.115.248/imgs/gif.gif'></image>
+            <image src='http://139.9.115.248/imgs/gif.gif'></image>
+                      <image src='http://139.9.115.248/imgs/gif.gif'></image>
+            <image src='http://139.9.115.248/imgs/gif.gif'></image>
+  </view>
+</view> -->
+
+<!-- loading -->
+<view  wx:if="{{loading}}" class='loading-box'>
+<image class='loading-btn' src='/images/loading.png'></image>
+<view>加载中...</view>
+</view>
+
+<view bindtap='openDetail'  data-index="{{index}}"wx:for="{{items}}"  class="clearfix object-box bg-gradual-red text-center {{item.flag ? 'object-detail' : 'none'}} {{item.flag2 ? 'object-detail-over' : 'none'}}">
+<view class='object-box-arrow' catchtap='closeDetail' data-index="{{index}}"> 
+  <text class="{{item.flag?'cuIcon-discover':'cuIcon-refresharrow'}}"></text>
+</view>
+  <view class='object-box-title'>
+  {{item.name}}
+  </view>
+
+  <view class='object-box-time'> 
+    2019.12.6
+  </view> 
+  
+  <view class='object-icon-Box'>
+    <view class='object-icon-box'>
+      <view>{{item.files}}</view>
+      <text class='cuIcon-file'></text>
+    </view>
+
+        <view class='object-icon-box'>
+      <view>{{item.members}}</view>
+      <text class='cuIcon-friend'></text>
+    </view>
+
+        <view class='object-icon-box'>
+      <view>{{item.days}}</view>
+      <text class='cuIcon-time'></text>
+    </view>
+
+  </view>
+
+  <view class="object-file-Box {{item.flag?'item-file-show':'item-file-hide'}}">
+      <view  class='item-title'   wx:if="{{item.flag}}">
+        <text class='cuIcon-file' ></text>  项目文件
+      </view>
+      <view bindtap='fileDownload' data-format="{{item.format}}" data-url="{{item.url}}" wx:for="{{item.filesInfo}}" class="object-file-box ">
+        <image class= src='/images/{{item.format}}.png'></image>
+        <text class='object-file-name text-black'>{{item.name}}</text>
+      </view>
+
+
+  </view>
+      <view class='item-title'  wx:if="{{item.flag}}">
+        <text class='cuIcon-friend '></text>  参与成员
+      </view>
+<view  class="objetc-member-avatar-Box {{item.flag?'item-avatar-show':'item-avatar-hide'}} ">
+  <!-- <image src='http://139.9.115.248/imgs/gif.gif'></image>
+    <image src='http://139.9.115.248/imgs/gif.gif'></image>
+      <image src='http://139.9.115.248/imgs/gif.gif'></image>
+        <image src='http://139.9.115.248/imgs/gif.gif'></image>
+          <image src='http://139.9.115.248/imgs/gif.gif'></image>
+            <image src='http://139.9.115.248/imgs/gif.gif'></image>
+                      <image src='http://139.9.115.248/imgs/gif.gif'></image>
+            <image src='http://139.9.115.248/imgs/gif.gif'></image> -->
+            <image wx:for="{{item.membersInfo}}" src='{{item.avater}}'></image>
+</view>
+
+      <view  class='item-title'   wx:if="{{item.flag}}">
+        <text class='cuIcon-time ' ></text>  项目日志
+      </view>
+
+    <view class="logs-Box {{item.flag?'logs-Box-show':'logs-Box-hide'}}">
+    <!-- <view wx:for="{{item.logs}}" class='logs-box'> -->
+      <view wx:for="{{item.logs}}" class="{{index%2==0?'logs-box':'logs-box-right'}}">
+            <view class="{{index%2==0?'logs-line-circle':'logs-line-circle-right'}}">
+
+            </view>
+            <view class="{{index%2==0?'logs-content-box':'logs-content-box-right'}}">
+              {{item.log}}
+
+              <view class='logs-time'>{{item.time}}</view>
+              <view class="{{index%2==0?'logs-content-arrow':'logs-content-arrow-right'}}">
+              </view>
+            </view>
+
+            <text class="{{index%2==0?'logs-icon-right':'logs-icon'}} {{logsIcon[index%4]}}"></text>
+      </view>
+
+
+
+    </view>
+
+</view>

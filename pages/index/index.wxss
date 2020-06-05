@@ -1,0 +1,172 @@
+.bar-tag{
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  z-index: 110;
+  background-color: rgba(255, 255, 255, 0.9);
+  /* animation-name: tagFadeIn;
+  animation-duration: 1s; */
+}
+
+
+.add-Box{
+  text-align: center;
+  width: 70vw;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* bottom: 88rpx; */
+  display: flex;
+  bottom: 0rpx;
+  justify-content: space-between;
+
+}
+
+.add-box{
+          color: #69606b;
+          position: relative;        
+}
+
+.add-Box:active{
+  opacity: 0.6;
+}
+
+.add-icon-box{
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  font-size: 40rpx;
+  line-height: 80rpx;
+    width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.add-icon-box1{
+background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+
+    background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+}
+
+.add-icon-box2{
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+
+    background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+}
+
+.add-icon-box3{
+    background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+
+}
+
+.add-icon-box4{
+background-image: linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 48%, #625EB1 100%);
+background-image: linear-gradient(to top, #209cff 0%, #68e0cf 100%);
+
+    background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+}
+
+.tag-hide{
+  /* display: none; */
+  animation-fill-mode: forwards;
+  animation-name: tagFadeOut;
+  animation-duration: 0.7s;
+}
+
+.tag-show{
+  display: flex;
+  animation-fill-mode: forwards;
+  animation-name: tagFadeIn;
+  animation-duration: 0.7s;
+}
+
+.icon-hide1{
+  animation-name: iconBoxFadeOut;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+.icon-hide2{
+  animation-name: iconBoxFadeOut;
+  animation-duration: 0.35s;
+  animation-fill-mode: forwards;
+}
+.icon-hide3{
+  animation-name: iconBoxFadeOut;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+}
+.icon-hide4{
+  animation-name: iconBoxFadeOut;
+  animation-duration: 0.45s;
+  animation-fill-mode: forwards;
+}
+.icon-show1{
+  /* display: inline-block; */
+  animation-name: iconBoxFadeIn;
+  animation-duration: 0.45s;
+  animation-fill-mode: forwards;
+}
+.icon-show2{
+  /* display: inline-block; */
+  animation-name: iconBoxFadeIn;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+}
+.icon-show3{
+  /* display: inline-block; */
+  animation-name: iconBoxFadeIn;
+  animation-duration: 0.35s;
+  animation-fill-mode: forwards;
+}
+.icon-show4{
+  /* display: inline-block; */
+  animation-name: iconBoxFadeIn;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+.hide{
+  display: none;
+}
+
+@keyframes tagFadeIn{
+  0%{
+    background-color: rgba(255, 255, 255, 0);
+    }
+  100%{
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+
+@keyframes tagFadeOut{
+  0%{
+    background-color: rgba(255, 255, 255, 0.9);
+    }
+  100%{
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
+@keyframes iconBoxFadeIn{
+  0%{
+    opacity: 0;
+    bottom: 0;
+    }
+  100%{
+    opacity: 1;
+    bottom: 230rpx;
+  }
+}
+
+
+@keyframes iconBoxFadeOut{
+  0%{
+    opacity: 1;
+    bottom: 230rpx;
+    }
+  100%{
+    opacity: 0;
+    bottom: 0;
+  }
+}
+

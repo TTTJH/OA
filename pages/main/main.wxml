@@ -1,0 +1,65 @@
+<cu-custom bgColor="bg-gradual-blue">
+  <view slot="content">工程楼实验室管理</view>
+</cu-custom>
+<view class='index-Box'>
+
+    <!-- <view bindtap='goto' data-index='0' class="">  -->
+      <view  bindtap='goto' data-index='0' class="bg-gradual-blue padding radius shadow-blur index-box  index-box-1">
+
+    <text class="cuIcon-{{icons[0].name}} margin-top-sm  text-white icon-lg-size main-icon-lg"></text>
+    <view  class="text-lg margin-top-sm" >签到</view>
+    <view class='text-ececec txt-ellipsis'>日常活动打卡处</view>
+
+        <!-- <view class="margin-top-sm text-Abc">#0081ff - #1cbbb4</view>
+                <view class="text-lg">靛青</view>
+        <view class="margin-top-sm text-Abc">#0081ff - #1cbbb4</view> -->
+      </view>
+    <!-- </view> -->
+    <view class='box'>
+ <view class='box1'>
+      <view bindtap='goto' data-index='1' class="bg-gradual-blue padding radius shadow-blur index-box  index-box-2">
+    <text class="cuIcon-{{icons[1].name}} margin-top-sm  text-white icon-lg-size main-icon-lg"></text>
+    <view  class="text-lg margin-top-sm " >成员</view>
+    <view class='text-ececec txt-ellipsis'>实验室成员查看与管理</view>
+      </view>
+
+      <!-- <view class="">  -->
+      <view  bindtap='goto' data-index='3'  class="bg-gradual-blue padding radius shadow-blur index-box  index-box-4">
+    <text class="cuIcon-{{icons[3].name}} margin-top-sm  text-white icon-lg-size main-icon-lg"></text>
+    <view  class="text-lg margin-top-lg item-title" >资源</view>
+    <view class='text-ececec txt-ellipsis'>优秀资源整理推荐</view>
+      </view>
+    </view>
+ <!-- </view> -->
+
+ <view class='box2'>
+            <!-- <view class="">  -->
+      <view  bindtap='goto' data-index='2'  class="bg-gradual-blue padding radius  shadow-blur index-box  index-box-3">
+    <text class="cuIcon-{{icons[2].name}} margin-top-sm  text-white icon-lg-size main-icon-lg"></text>
+    <view  class="text-lg margin-top-lg item-title" >项目</view>
+    <view class='text-ececec txt-ellipsis'>项目展示与进度查看</view>
+      </view>
+    <!-- </view> -->
+
+            <!-- <view class="">  -->
+      <view bindtap='goto' data-index='4' class="bg-gradual-blue padding radius shadow-blur index-box  index-box-5">
+    <text class="cuIcon-{{icons[4].name}} margin-top-sm  text-white icon-lg-size main-icon-lg"></text>
+    <view  class="text-lg margin-top-sm" >讨论</view>
+    <view class='text-ececec txt-ellipsis'>日常讨论留言版</view>
+      </view>
+    <!-- </view> -->
+ </view>
+
+    </view>
+</view>
+
+<view class="text-center margin-top">
+<!-- <image class='index-bottom-gif' src='http://139.9.115.248/imgs/loading.gif'></image> -->
+  <text class="text-grey text-xl index-bottom-txt">Hi! {{userInfo.nickName}}</text>
+</view>
+
+<view class='circle1'>
+</view>
+<view class='circle2'>
+</view>
+

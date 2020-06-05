@@ -1,0 +1,55 @@
+<view class='container'>
+
+<main wx:if="{{curPage=='main'}}"></main>
+<mine wx:if="{{curPage=='mine'}}"></mine> 
+<view class='bar-tag {{tagStatusClass}} {{hide}}' bindtap='tagChange'>
+  <view class='add-Box' >
+      <view class='add-box  {{iconStatusClass[0]}} {{hide}}'>
+        <view class='add-icon-box add-icon-box1'>
+        <text class='cuIcon-activity'></text>
+        </view>
+        <view>发起签到</view>
+      </view>
+      <view class='add-box  {{iconStatusClass[1]}} {{hide}}'>
+        <view class='add-icon-box add-icon-box2' bindtap='uploadResource'>
+        <text class='cuIcon-repair'></text>
+        </view>
+        <view>添加项目</view>
+      </view>
+      <view class='add-box  {{iconStatusClass[2]}} {{hide}}'>
+        <view class='add-icon-box add-icon-box3'>
+        <text class='cuIcon-file'></text>
+        </view>
+        <view>添加资源</view>
+      </view>
+      <view class='add-box  {{iconStatusClass[3]}} {{hide}}'>
+        <view class='add-icon-box add-icon-box4'>
+        <text class='cuIcon-comment'></text>
+        </view>
+        <view>留言</view>
+      </view>
+  </view>
+</view>
+  <view class="cu-bar tabbar  bg-white foot">
+    <view class="action {{curPage=='main'?'text-blue':'text-gray'}}" bindtap="navChange" data-cur="main">
+      <view class="cuIcon-homefill"></view> 首页
+    </view>
+
+    <view class="action text-gray add-action">
+      <button class="cu-btn cuIcon-add bg-blue shadow"  bindtap='tagChange'></button>
+      发布
+    </view>
+    <!-- bindtap='upload' -->
+
+    <view class="action {{curPage=='mine'?'text-blue':'text-gray'}}" bindtap="navChange" data-cur="mine">
+      <view class="cuIcon-my">
+        <view class="badge"></view>
+      </view>
+      我的
+    </view>
+  </view>
+<!-- <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">导航栏</view>
+</cu-custom> -->
+</view>
