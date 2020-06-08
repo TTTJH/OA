@@ -94,9 +94,14 @@ Page({
     //获取点击item的id
     var that = this;
     let id = this.data.items[index].id
+    let token = wx.getStorageSync('token')
     wx.request({
       url: `http://nothing.natapp1.cc/item/go/${id}`, //id为0,获取全部项目
       method: "GET",
+      header: {
+        'content-type': 'application/json',
+        'token': token
+      },
       success: function (res) {
 
         let items = that.data.items;
@@ -163,9 +168,14 @@ Page({
   onReady: function () {
     console.log(this.data.items);
     let that = this;
+    let token = wx.getStorageSync('token')
     wx.request({
       url: 'http://nothing.natapp1.cc/item/go/0', //id为0,获取全部项目
       method: 'GET', //请求方式
+      header: {
+        'content-type': 'application/json',
+        'nothing-token': token
+      },
       // header: {
       //   'Content-Type': 'application/json',
       // },

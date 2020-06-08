@@ -1,0 +1,128 @@
+.of-container{
+  position: relative;
+  z-index: 100;
+}
+.name-input-box{
+  width: 90vw;
+  padding: 5rpx;
+  margin: 30rpx auto;
+  background-color: white;
+  text-align: center;
+  color: #69606b;
+  border-radius: 10rpx;
+  border: 1px solid #f0f0f0;
+}
+
+.avatar-Box{
+  width: 90vw;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: space-around;
+  background-color: white;
+  margin: 10rpx auto;
+  border: 1px solid #f0f0f0;
+  border-radius: 10rpx;
+  padding: 5rpx;
+  padding-bottom: 70rpx;
+
+}
+.avatar-box{
+  text-align: center;
+  flex-basis: 30%;
+
+  width: 200rpx;
+  /* height: 200rpx; */
+  padding: 20rpx;
+
+/* border:2px solid #40e0d0; */
+  border: 1px solid #f0f0f0;
+  border-radius: 5rpx;
+  margin: 5rpx;
+}
+.avatar-box image{
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+}
+.avatar-Box-btn{
+  /* width: 50rpx; */
+  width: 98%;
+  height: 50rpx;
+  bottom: 10rpx;
+  /* left: 50%;
+  transform: translateX(-50%); */
+  /* border-radius: 50%; */
+  border-radius: 5rpx;
+  position: absolute;
+  text-align: center;
+  
+}
+.avatar-Box-btn text{
+  font-size: 40rpx;
+  line-height: 50rpx;
+}
+
+.file-Box{
+  width: 90vw;
+    background-color: white;
+  margin: 20rpx auto;
+  border: 1px solid #f0f0f0;
+  border-radius: 10rpx;
+  padding: 0 10rpx;
+}
+.file-box{
+  padding: 10rpx;
+  text-align: center;
+    border: 1px solid #f0f0f0;
+  border-radius: 10rpx;
+  margin: 10rpx 0;
+}
+.file-box-add{
+    text-align: center;
+    border: 1px dashed #888888;
+  border-radius: 10rpx;
+  margin: 10rpx 0;
+  padding: 10rpx 0;
+}
+.file-box-add text{
+  font-size: 60rpx;
+  color: #888888;
+}
+.file-box image{
+  width: 75rpx;
+  height: 75rpx;
+}
+
+.file-box text,
+.file-box image{
+  margin: 0 10rpx;
+  vertical-align: middle;
+}
+.of-sub-btn{
+  width: 90vw;
+  margin: 0 auto;
+}
+
+
+.circle1{
+  z-index: 0;
+  width: 70vw;
+  height: 70vw;
+  position: fixed;
+  left: -35vw;
+  bottom: 30px;
+  border-radius: 50%;
+  background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+}
+
+.circle2{
+  z-index: 0;
+  width: 70vw;
+  height: 70vw;
+  position: fixed;
+  right: -35vw;
+  top: 30px;
+  border-radius: 50%;
+  background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+} 

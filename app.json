@@ -9,7 +9,8 @@
       "pages/object/object",
       "pages/resource/resource",
       "pages/form/form",
-      "pages/towxml/main"
+      "pages/towxml/main",
+      "pages/of/of"
   ],
   "window": {
     "backgroundTextStyle": "light",

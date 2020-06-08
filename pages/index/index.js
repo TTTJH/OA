@@ -7,16 +7,32 @@ Page({
     iconStatusClass:[],
     hide:"hide",
     curPage:'main',
-    userInfo:app.globalData.userInfo
+    userInfo:app.globalData.userInfo,
+    putUrl:"",
+    //用于确认发布按钮动画是否在进行
+    fading:false,
+    gotoList: [
+      //以下为发布按钮跳转路径
+      '/pages/sf/sf',
+      '/pages/of/of',
+
+    ],
+  },
+  goto: function (res) {
+    console.log(this.data.gotoList[res.currentTarget.dataset.index])
+    wx.navigateTo({
+      url: this.data.gotoList[res.currentTarget.dataset.index]
+    })
   },
   uploadResource(){
-    wx.chooseImage({
+    wx.chooseMessageFile({
       success(res) {
         console.log(res);
-        const tempFilePaths = res.tempFilePaths
+        // const tempFilePaths = res.tempFilePaths
+        const tempFilePaths = res.tempFiles[0].path
         //将选择好的文件转为base64格式
         wx.getFileSystemManager().readFile({
-          filePath: res.tempFilePaths[0], //选择图片返回的相对路径
+          filePath: tempFilePaths, //选择图片返回的相对路径
           encoding: "base64",//这个是很重要的
           success: res => { //成功的回调
             //返回base64格式
@@ -27,10 +43,63 @@ Page({
               decodedString = decodeURIComponent(escape((encodedString)));//没有这一步中文会乱码
 
             console.log(decodedString);
+          },
+          fail:res => {
+            console.log("uploadresource fial")
           }
         })
       }
     })
+  },
+  uploadItem(){
+    //先往后端传一个文件名,得到putUrl传送url
+    wx.request({
+      url: 'http://nothing.natapp1.cc/file/put/xxx',
+      method:"get",
+      header: {
+            'Content-Type': 'application/octet-stream',
+            "x-oss-meta-author":"aliy"
+          },
+      success(res){
+        console.log(res);
+        let {putUrl} = res.data.data;
+
+        wx.chooseMessageFile({
+          type:'image',
+          success(res) {
+            // const tempFilePaths = res.tempFilePaths
+            const tempFilePaths = res.tempFiles
+            wx.uploadFile({
+              url: putUrl, //仅为示例，非真实的接口地址
+              filePath: tempFilePaths[0],
+              name: 'file',
+              formData: {
+              },
+              success(res) {
+                console.log(":)")
+                const data = res.data
+                console.log(res);
+              },
+              fail(){
+                console.log("::(")
+              }
+            })
+          }
+        })
+      },
+      fail(res){
+        console.log(":(");
+      }
+    })
+
+  },
+  queryMultipleNodes: function () {
+    const query = wx.createSelectorQuery()                // 创建节点查询器 query
+    query.select('#productServe').boundingClientRect()    // 这段代码的意思是选择Id=productServe的节点，获取节点位置信息的查询请求
+    query.select('#enterpriseServe').boundingClientRect() // 这段代码的意思是选择Id=enterpriseServe的节点，获取节点位置信息的查询请求
+    query.select('#normalServe').boundingClientRect()     // 这段代码的意思是选择Id=normalServe的节点，获取节点位置信息的查询请求
+    query.selectViewport().scrollOffset()                 // 这段代码的意思是获取页面滑动位置的查询请求
+
   },
   navChange(e){
     this.setData({
@@ -61,13 +130,17 @@ Page({
       }
       this.setData({
         tagStatusClass: 'tag-hide',
-        iconStatusClass:arr
+        iconStatusClass:arr,
+        fading:true,
       })
+      //延迟一秒中给tag添加hide类名,并且在该1秒钟,发布按钮无效
+
       setTimeout(() => {
         this.setData({
-          hide:"hide"
+          hide:"hide",
+          fading:false
         })
-      },1000)
+      },500)//此秒数与tagfadeout的duration相对应
       
     }
   },

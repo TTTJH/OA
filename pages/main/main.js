@@ -95,7 +95,7 @@ Component({
       '/pages/member/member',
       "/pages/object/object",
       "/pages/resource/resource",
-      "/pages/chat/chat"
+      "/pages/chat/chat",      
     ],
     motto: 'Hi 同学！',
     userInfo: {

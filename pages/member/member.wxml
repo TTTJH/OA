@@ -5,21 +5,29 @@
 </view>
 </cu-custom>
 
+<view  wx:if="{{loading}}" class='loading-box'>
+<image class='loading-btn' src='/images/loading.png'></image>
+<view>加载中...</view>
+</view>
+
 <view class='member-Box'>
     <!-- <view class="padding-sm "> -->
-     <view class="member-box {{bgColor[2]}} padding radius shadow-blur">
+     <view wx:for="{{users}}" class="member-box {{bgColor[index%4]}} padding radius shadow-blur">
 
-      <view class="text-lg member-name">胡一涵</view>
-      <text class="margin-top-sm text-Abc">实验室负责人</text>
+      <view class="text-lg member-name">{{item.name}}</view>
+       <text class="margin-top-sm text-Abc" wx:if="{{item.role <= 2 }}">实验室管理员</text>
+          <text class="margin-top-sm text-Abc" wx:if="{{item.role > 2 }}">实验室成员</text>
       <text class='cuIcon-friendfamous member-icon'></text>
 
-       <view class="margin-top-sm text-f0f0f0 text-unhighlight member-class">3G软件17-02</view>
-                     <image class='member-img' src='http://139.9.115.248/imgs/gif.gif'>
+       <view class="margin-top-sm text-f0f0f0 text-unhighlight member-class">{{item.belongClass}}</view>
+                     <image class='member-img' src="{{item.avater}}">
               
               </image>
     </view>
 
-         <view class="member-box {{bgColor[4]}} padding radius shadow-blur">
+
+
+ <!-- <view class="member-box {{bgColor[4]}} padding radius shadow-blur">
 
       <view class="text-lg  member-name">肖明珂</view>
 
@@ -30,9 +38,9 @@
                      <image class='member-img' src='http://139.9.115.248/imgs/gif.gif'>
               
               </image>
-    </view>
+    </view> -->
 
-    <view class=" member-box bg-gradual-orange padding radius shadow-blur">
+    <!-- <view class=" member-box bg-gradual-orange padding radius shadow-blur">
       <view class="text-lg  member-name">屠建昊</view>
       <text class="margin-top-sm text-Abc">实验室外包仔</text>
     <text class='cuIcon-people  member-icon'></text>
@@ -41,7 +49,7 @@
                      <image class='member-img' src='http://139.9.115.248/imgs/gif.gif'>
               
               </image>
-    </view>
+    </view> -->
 
 
 

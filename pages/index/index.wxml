@@ -10,14 +10,15 @@
         </view>
         <view>发起签到</view>
       </view>
-      <view class='add-box  {{iconStatusClass[1]}} {{hide}}'>
-        <view class='add-icon-box add-icon-box2' bindtap='uploadResource'>
+       <!-- bindtap='uploadItem' -->
+      <view class='add-box  {{iconStatusClass[1]}} {{hide}}' bindtap='goto' data-index='1' >
+        <view class='add-icon-box add-icon-box2' id='test'>
         <text class='cuIcon-repair'></text>
         </view>
         <view>添加项目</view>
       </view>
       <view class='add-box  {{iconStatusClass[2]}} {{hide}}'>
-        <view class='add-icon-box add-icon-box3'>
+        <view class='add-icon-box add-icon-box3' bindtap='uploadResource'>
         <text class='cuIcon-file'></text>
         </view>
         <view>添加资源</view>
@@ -36,7 +37,7 @@
     </view>
 
     <view class="action text-gray add-action">
-      <button class="cu-btn cuIcon-add bg-blue shadow"  bindtap='tagChange'></button>
+      <button class="cu-btn cuIcon-add bg-blue shadow"  bindtap="{{fading ? '' : 'tagChange'}}"></button>
       发布
     </view>
     <!-- bindtap='upload' -->

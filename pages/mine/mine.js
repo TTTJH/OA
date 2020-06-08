@@ -33,14 +33,21 @@ Component({
     getUserInfo: function (e) {
       console.log(e)
       app.globalData.userInfo = e.detail.userInfo
+      let {
+        encryptedData,
+        iv
+      } = e.detail
+      console.log(encryptedData)
+      console.log(iv)
       this.setData({
         userInfo: e.detail.userInfo,
         hasUserInfo: true
       })
-    
+      
       // 登录
       wx.login({
         success: res => {
+          console.log(res)
           wx.request({
             url: 'http://nothing.natapp1.cc/wx/login',
             method: 'POST',
@@ -49,17 +56,27 @@ Component({
             // },
             data: {
               code: res.code,
+              encryptedData,
+              iv
             },
             success: function (res) {
+              console.log("login success!")
+              console.log(res)
               console.log("登入，设置了最新的userData给storage");
               wx.setStorageSync("userData", res.data.data.user);
-
+              // 设置token
+              wx.setStorageSync("token",res.data.data.token)
               //判断用户有无完善信息请求
-              let userStorage = wx.getStorageSync('userData');
+              let userStorage = wx.getStorageSync('userData')
+              let token = wx.getStorageSync('token')
               console.log(userStorage)
               wx.request({
                 url: `http://nothing.natapp1.cc/user/info/${userStorage.id}`,
                 method: 'GET',
+                header: {
+                  'content-type': 'application/json',
+                  'nothing-token': token
+                },
                 // header: {
                 //   'Content-Type': "application/x-www-form-urlencoded",
                 // },
@@ -67,10 +84,14 @@ Component({
                 //   id: 100,
                 // },
                 success: function (res) {
-                  //返回false即是没有完善信息要强制跳转到form页面
-                  wx.navigateTo({
-                    url: '/pages/form/form'
-                  })
+                  console.log(res.data.data.boolean)
+                  if(!res.data.data.boolean){
+                    //返回false即是没有完善信息要强制跳转到form页面
+                    wx.navigateTo({
+                      url: '/pages/form/form'
+                    })
+                  }
+
                 },
                 fail: function () {
                   console.log("请求数据失败");

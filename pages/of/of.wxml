@@ -1,0 +1,87 @@
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
+<view slot="content">
+<text class='cuIcon-roundadd'></text>
+添加项目
+</view>
+</cu-custom>
+
+<view class='of-container'>
+  <view class='name-input-box' >
+		<input placeholder="项目名称"></input>
+  </view>
+
+  <view class='avatar-Box'>
+    <view class='avatar-Box-btn '  >
+      <text class='cuIcon-fold'></text>
+    </view>
+
+    <view class='avatar-box'>
+      <image src='http://139.9.115.248/imgs/gif.gif'></image>
+      <view>图剑豪</view>
+    </view>
+
+    <view class='avatar-box'>
+      <image src='http://139.9.115.248/imgs/gif.gif'></image>
+      <view>图剑豪</view>
+    </view>
+
+     <view class='avatar-box'>
+      <image src='http://139.9.115.248/imgs/gif.gif'></image>
+      <view>图剑豪</view>
+    </view>
+
+    <view class='avatar-box'>
+      <image src='http://139.9.115.248/imgs/gif.gif'></image>
+      <view>图剑豪</view>
+    </view>
+
+    <view class='avatar-box'>
+      <image src='http://139.9.115.248/imgs/gif.gif'></image>
+      <view>图剑豪</view>
+    </view>
+
+     <view class='avatar-box'>
+      <image src='http://139.9.115.248/imgs/gif.gif'></image>
+      <view>图剑豪</view>
+    </view>
+
+  </view>
+
+  <view class='file-Box'>
+    <view class='file-box'>
+      <image src='/images/doc.png'></image>
+      <text>Readme.doc</text>
+    </view>
+
+        <view class='file-box'>
+      <image src='/images/doc.png'></image>
+      <text>Readme.doc</text>
+    </view>
+
+    <view class='file-box'>
+      <image src='/images/doc.png'></image>
+      <text>Readme.doc</text>
+    </view>
+
+    <view class='file-box-add'>
+      <text class='cuIcon-add'></text>
+    </view>
+  </view>
+
+
+    <button class="cu-btn block bg-blue margin-tb-sm lg of-sub-btn">
+    <text class="cuIcon-loading2 iconfont-spin"></text> 
+    加载
+    </button>
+
+</view>
+
+
+
+
+
+
+<view class='circle1'>
+</view>
+<view class='circle2'>
+</view>
