@@ -14,8 +14,11 @@
     <view class='avatar-Box-btn '  >
       <text class='cuIcon-fold'></text>
     </view>
-
-    <view class='avatar-box'>
+<view  wx:if="{{loading}}" class='loading-box'>
+<image class='loading-btn' src='/images/loading.png'></image>
+<view>加载中...</view>
+</view>
+    <!-- <view class='avatar-box'>
       <image src='http://139.9.115.248/imgs/gif.gif'></image>
       <view>图剑豪</view>
     </view>
@@ -43,7 +46,7 @@
      <view class='avatar-box'>
       <image src='http://139.9.115.248/imgs/gif.gif'></image>
       <view>图剑豪</view>
-    </view>
+    </view> -->
 
   </view>
 

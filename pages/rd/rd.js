@@ -4,8 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    users:[],
-    loading:true,
+    
   },
 
   /**
@@ -19,26 +18,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    let that = this;
-    let token = wx.getStorageSync('token')
-    wx.request({
-      url: 'http://nothing.natapp1.cc/user/list',
-      method: 'GET',
-      header: {
-        'content-type': 'application/json',
-        'nothing-token': token
-      },
-      success(res) {
-
-        let { users } = res.data.data
-        console.log(users)
-        that.setData({
-          users,
-          loading: false,
-        })
-
-      }
-    })
+    
   },
 
   /**

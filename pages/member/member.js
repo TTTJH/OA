@@ -19,6 +19,7 @@ Page({
   onReady: function () {
     let that = this;
     let token = wx.getStorageSync('token')
+    console.log(token)
     wx.request({
       url: 'http://nothing.natapp1.cc/user/list',
       method:'GET',
@@ -27,7 +28,16 @@ Page({
         'nothing-token': token
       },
       success(res){
-
+        //若续约token
+        // let token = res.data.header.nothing-token;
+        console.log(res)
+        console.log(res.header['nothing-token'])        
+        console.log(res)
+        res.header['nothing-token']
+        ?
+        wx.setStorageSync("token", res.header['nothing-token'])
+        :
+        console.log("nothing")
         let {users} = res.data.data
         console.log(users)
         that.setData({
@@ -35,6 +45,9 @@ Page({
           loading:false,
         })
 
+      },
+      fail(res){
+        console.log(res)
       }
     })
   },

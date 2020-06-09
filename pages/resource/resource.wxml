@@ -5,20 +5,8 @@
 </view>
 </cu-custom>
 
-<view class="container">
-  <!-- <towxml nodes="{{article}}"/> -->
-
-  <view class="book">
-      <view class='txt-box'>
-              <view class='title'>操作系统学习手札</view>
-               <text class='cuIcon-discover'></text>
-
-      </view>
-               <view class='author'>由tutu上传</view>
-  </view>
-
-   
-</view>
+<!-- <rm/> -->
+<rd/>
 
 <!-- <view class='resource-Box'>
 

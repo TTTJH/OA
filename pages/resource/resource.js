@@ -7,7 +7,14 @@ Page({
    */
   data: {
     isLoading: true,					// 判断是否尚在加载中
-    article: {}						// 内容数据
+    article: {},						// 内容数据
+    iconsList:[
+      'cuIcon-discover',
+      'cuIcon-upstage',
+      'cuIcon-creative',
+      'cuIcon-paint',
+      'cuIcon-skin',
+    ]
   },
 
   /**
