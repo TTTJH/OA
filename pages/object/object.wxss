@@ -113,6 +113,20 @@
   animation-fill-mode: forwards;
   animation-duration: 1s;
 }
+.add-file-btn{
+    margin: 20rpx auto;
+    text-align: center;
+    line-height: 120rpx;
+    font-size: 50rpx;
+  box-shadow: 10rpx 10rpx 30px gray;
+  border: 1px dashed;
+  width: 75vw;
+  height: 120rpx;
+  border-radius: 20rpx;
+  animation-name: fileFadeIn;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}
 .item-file-show{
   display: block;
 }
@@ -131,12 +145,13 @@
   vertical-align: middle;
 }
 
+
 .object-file-name{
     vertical-align: middle;
 }
 
 .objetc-member-avatar-Box{
-
+  
   width: 70vw;
   margin: 30rpx auto;
   flex-wrap: wrap;
@@ -150,6 +165,79 @@
   border: 2px solid;
   margin: 10rpx;
   border-radius: 50%;
+}
+.add-member-btn{
+    width: 80rpx;
+  height: 80rpx;
+  display: inline-block;
+    border: 2px solid;
+  margin: 10rpx;
+  border-radius: 50%;
+  line-height: 78rpx;
+  text-align: center;
+  font-size: 50rpx;
+}
+
+.member-list-box{
+  /* width: 100vw; */
+  /* overflow-x: scroll; */
+  height:300rpx;
+  display: flex;
+  white-space: nowrap;
+    /* padding: 30rpx 10rpx; */
+  background-color: white;
+  margin-top: 20rpx;
+  box-shadow: 0 0 30rpx #69606b;
+}
+
+/* .member-list{
+  display: flex;
+  white-space: nowrap;
+  width: 200vw;
+  padding: 10rpx 0;
+  background-color: white;
+  margin-top: 20rpx;
+  box-shadow: 0 0 30rpx #69606b;
+} */
+
+.user-box{
+  position: relative;
+  display: inline-block;
+  margin: 0 10rpx;
+  color: #69606b;
+  text-align: center;
+  font-size: 22rpx;
+
+
+}
+
+.user-box-choose{
+      border:2px solid #c2f0fc;
+box-shadow:0 0 20rpx #c2f0fc;
+border-radius:20rpx
+}
+
+.dot{
+  width: 10rpx;
+  height: 10rpx;
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+  border-radius: 50%;
+  background-color: #c2f0fc;
+}
+
+.user-box image{
+  display: block;
+    width: 80rpx;
+  height: 80rpx;
+  /* border: 2px solid white; */
+  margin: 10rpx;
+  border-radius: 50%;
+    /* box-shadow: 0 0 30rpx #69606b; */
+}
+.user-box text{
+  display: block;
 }
 
 .item-avatar-show{
@@ -177,7 +265,13 @@
     transform: rotate(360deg);
   }
 }
-
+.logs-textarea{
+  height: 20vh;
+  margin: 20rpx auto;
+  background-color: white;
+  border-radius: 20rpx;
+  color: black;
+}
 .logs-Box{
   margin-top: 10rpx;
 }
@@ -195,7 +289,20 @@
   /* left: 49.5vw; */
   left: calc(50vw - 2px);
 }
-
+.logs-line-circle-add{
+  width: 50rpx;
+  height: 50rpx;
+  right: -25.5rpx;
+  border-radius: 50%;
+  border: 1px solid white;
+  position: absolute;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 40rpx;
+  color: #69606b;
+  box-shadow: 0 0 10rpx #69606b;
+    background-color: white;
+}
 .logs-line-circle{
   width: 25rpx;
   height: 25rpx;

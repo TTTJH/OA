@@ -15,7 +15,8 @@ Page({
       //以下为发布按钮跳转路径
       '/pages/sf/sf',
       '/pages/of/of',
-
+      //添加资源不跳转
+      '/pages/cf/cf'
     ],
   },
   goto: function (res) {
@@ -42,7 +43,25 @@ Page({
             let encodedString = String.fromCharCode.apply(null, unit8Arr),
               decodedString = decodeURIComponent(escape((encodedString)));//没有这一步中文会乱码
 
-            console.log(decodedString);
+            console.log(typeof decodedString);
+            let token = wx.getStorageSync('token')
+            wx.request({
+              url: 'http://nothing.natapp1.cc/resource/go',
+              method: "POST",
+              header: {
+                'content-type': 'application/json',
+                'nothing-token': token
+              },
+              data:{
+                content: decodedString
+              } ,
+              success(res){
+                console.log(res)
+              },
+              fail(res){
+                console.log(":(")
+              }
+            })
           },
           fail:res => {
             console.log("uploadresource fial")

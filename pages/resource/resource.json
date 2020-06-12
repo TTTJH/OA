@@ -1,7 +1,4 @@
 {
     "usingComponents": {
-      "towxml": "/towxml/towxml",
-      "rm":"/pages/rm/rm",
-      "rd":"/pages/rd/rd"
     }
 }

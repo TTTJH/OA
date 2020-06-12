@@ -13,6 +13,39 @@ Page({
     users:[],
     loading:true,
   },
+  delUser(e){
+    let {index} = e.currentTarget.dataset
+    let {users} = this.data
+    users[index].delStatus = !users[index].delStatus
+    this.setData({
+      users
+    })
+  },
+  del(e){
+    let that = this
+    let { index } = e.currentTarget.dataset
+    let token = wx.getStorageSync('token')
+
+    wx.request({
+      url: `http://nothing.natapp1.cc/user/${this.data.users[index].id}`,
+      method: 'DELETE',
+      header: {
+        'content-type': 'application/json',
+        'nothing-token': token
+      },
+      success(res){
+        console.log(res)
+        let {users} = that.data
+        users.splice(index, 1)
+        that.setData({
+          users
+        })
+      },
+      fail(res){
+
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -29,9 +62,6 @@ Page({
       },
       success(res){
         //若续约token
-        // let token = res.data.header.nothing-token;
-        console.log(res)
-        console.log(res.header['nothing-token'])        
         console.log(res)
         res.header['nothing-token']
         ?
@@ -39,7 +69,9 @@ Page({
         :
         console.log("nothing")
         let {users} = res.data.data
-        console.log(users)
+        users.forEach((item, index) => {
+          item.delStatus = false
+        })
         that.setData({
           users,
           loading:false,

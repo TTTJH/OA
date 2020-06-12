@@ -12,7 +12,10 @@
       "pages/towxml/main",
       "pages/of/of",
       "pages/rm/rm",
-      "pages/rd/rd"
+      "pages/rd/rd",
+      "pages/cf/cf",
+        "pages/sf/sf",
+          "pages/sf2/sf2"
   ],
   "window": {
     "backgroundTextStyle": "light",

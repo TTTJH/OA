@@ -4,7 +4,7 @@
 <mine wx:if="{{curPage=='mine'}}"></mine> 
 <view class='bar-tag {{tagStatusClass}} {{hide}}' bindtap='tagChange'>
   <view class='add-Box' >
-      <view class='add-box  {{iconStatusClass[0]}} {{hide}}'>
+      <view class='add-box  {{iconStatusClass[0]}} {{hide}}' bindtap='goto' data-index='0' >
         <view class='add-icon-box add-icon-box1'>
         <text class='cuIcon-activity'></text>
         </view>
@@ -23,11 +23,11 @@
         </view>
         <view>添加资源</view>
       </view>
-      <view class='add-box  {{iconStatusClass[3]}} {{hide}}'>
+      <view class='add-box  {{iconStatusClass[3]}} {{hide}}' bindtap='goto' data-index='2'>
         <view class='add-icon-box add-icon-box4'>
         <text class='cuIcon-comment'></text>
         </view>
-        <view>留言</view>
+        <view>发布公告</view>
       </view>
   </view>
 </view>

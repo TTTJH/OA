@@ -1,1 +1,12 @@
-<view>Hello</view>
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
+<view slot="content">
+<text class='cuIcon-file'></text>
+{{title}}
+</view>
+</cu-custom>
+
+<view  wx:if="{{isLoading}}" class='loading-box'>
+<image class='loading-btn' src='/images/loading.png'></image>
+<view>加载中...</view>
+</view>
+  <towxml nodes="{{article}}"/>

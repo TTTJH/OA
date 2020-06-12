@@ -1,0 +1,64 @@
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
+<view slot="content">
+<text class='cuIcon-activity'></text>
+发起活动签到
+</view>
+</cu-custom>
+<view class='container'>
+<view class='input-Box'>
+  <view class='input-box'>
+    <input bindinput='input1' maxlength='1' focus="{{focus1}}">
+    
+    </input>
+  </view>
+
+    <view class='input-box'>
+    <input bindinput='input2'  maxlength='1' focus="{{focus2}}">
+    
+    </input>
+  </view>
+
+    <view class='input-box'>
+    <input bindinput='input3'  maxlength='1' focus="{{focus3}}">
+    
+    </input>
+  </view>
+
+    <view class='input-box'>
+    <input bindinput='input4'  maxlength='1' focus="{{focus4}}">
+    
+    </input>
+  </view>
+
+  
+</view>
+      <!-- <view bindtap='sign' class="sign-box bg-gradual-blue padding radius shadow-blur text-center">
+    <view class="text-lg margin-top-sm" >发布</view>
+      </view> -->
+      	<view class="cu-form-group time-choose">
+		<view class="title">截止时间</view>
+		<picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="TimeChange">
+			<view class="picker">
+				{{time}}
+			</view>
+		</picker>
+	</view>
+
+          <button bgColor="" class="sf-btn bg-gradual-blue cu-btn block margin-tb-sm lg of-sub-btn" bindtap='submit'>
+    <text wx:if="{{submiting}}" class="cuIcon-loading2 iconfont-spin"></text> 
+        <text wx:if="{{!submiting}}">提交</text>
+     
+    </button>
+</view>
+
+
+    <view class='sf-txt-box'>
+      <view class='sf-txt1'>活动签到持续时间为5分钟</view>
+      <view class='sf-txt2'>管理员可发布无密码签到</view>
+    </view>
+
+
+    <view class='circle1'>
+</view>
+<view class='circle2'>
+</view>

@@ -12,8 +12,8 @@
 
 <view class='member-Box'>
     <!-- <view class="padding-sm "> -->
-     <view wx:for="{{users}}" class="member-box {{bgColor[index%4]}} padding radius shadow-blur">
-
+     <view wx:for="{{users}}" class="member-box {{bgColor[index%4]}} padding radius shadow-blur"
+     bindlongpress="delUser" data-index="{{index}}">
       <view class="text-lg member-name">{{item.name}}</view>
        <text class="margin-top-sm text-Abc" wx:if="{{item.role <= 2 }}">实验室管理员</text>
           <text class="margin-top-sm text-Abc" wx:if="{{item.role > 2 }}">实验室成员</text>
@@ -23,6 +23,9 @@
                      <image class='member-img' src="{{item.avater}}">
               
               </image>
+    <view class='del-btn' wx:if="{{item.delStatus}}" bindtap='del' data-index="{{index}}">
+      x
+    </view>
     </view>
 
 

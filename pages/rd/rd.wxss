@@ -1,0 +1,28 @@
+/* //重写towxml */
+.h2w{
+  min-height: 100vh;
+}
+.loading-box{
+    position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%,-50%,0);
+}
+.loading-btn{
+  width: 100rpx;
+  height: 100rpx;
+
+
+  animation-name: loading;
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes loading{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}

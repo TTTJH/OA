@@ -5,22 +5,32 @@ Page({
    */
   data: {
       loading:true,
+      itemName:"",
+      id:"",
       items:[],
+      users:[],
+      boxClass:[
+        'bg-gradual-blue',
+        'bg-gradual-red',
+        'bg-gradual-purple'
+        
+      ],
       logsIcon:[
         'cuIcon-discover',
         'cuIcon-emoji',
         'cuIcon-crown',
         'cuIcon-musicfill'
-      ]
+      ],
+      textarea:"",
   },
   fileDownload:function(e){
     //获取参数url和格式
     let { url,format } = e.currentTarget.dataset;
-    console.log(url);
+    // console.log(url);
     wx.downloadFile({
       url, //仅为示例，并非真实的资源
       success(res) {
-        console.log(res);
+        // console.log(res);
         // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
         const filePath = res.tempFilePath;
         wx.openDocument({
@@ -41,6 +51,8 @@ Page({
     items[index].flag = true;
     this.setData({
       items,
+      id: items[index].id,
+      itemName: items[index].name
     })
 
     //1s后再将flag2置为true
@@ -100,10 +112,17 @@ Page({
       method: "GET",
       header: {
         'content-type': 'application/json',
-        'token': token
+        'nothing-token': token
       },
       success: function (res) {
-
+        console.log(res)
+        //若续约token
+        res.header['nothing-token']
+          ?
+          wx.setStorageSync("token", res.header['nothing-token'])
+          :
+          console.log("nothing")
+        // console.log(res)
         let items = that.data.items;
         items[index].membersInfo = res.data.data.memebers;
         //模拟log
@@ -128,30 +147,57 @@ Page({
           'http://139.9.115.248/imgs/test1.doc',
           'http://139.9.115.248/imgs/test2.doc',
         ]
-        let filesInfo = [];
-        fileUrls.forEach((item, index) => {
-          let name = [];
-          for (let i = item.length - 1; i >= 0; i--) {
-            if (item[i] == '/') {
-              break;
-            } else {
-              name.unshift(item[i]);
+        let { files} = res.data.data
+        let filesInfo = []
+        /*filesInfo = [
+          {
+            name:xxx,
+            url:xxx,
+            format:xxx
+          },
+          {
+            name:xxx,
+            url:xxx,
+            format:xxx
+          }
+        ]*/
+        // console.log(files)
+          Object.keys(files).forEach((key, index) => {
+            
+
+            
+            let name = key.slice(key.indexOf('/')+1)
+            // console.log(name)
+            let url = files[key]
+            // console.log(url)
+            let format = key.slice(key.lastIndexOf('.')+1)
+            // console.log(format)
+            let obj = {
+              name,
+              url,
+              format
             }
-          }
-          let obj = {
-            url: item,
-            name: name.join(""),
-            format: name.join("").slice(-3)
-          }
-          filesInfo.push(obj);
+            filesInfo.push(obj)
+          // let name = [];
+          // for (let i = item.length - 1; i >= 0; i--) {
+          //   if (item[i] == '/') {
+          //     break;
+          //   } else {
+          //     name.unshift(item[i]);
+          //   }
+          // }
+          // let obj = {
+          //   url: item,
+          //   name: name.join(""),
+          //   format: name.join("").slice(-3)
+          // }
+          // filesInfo.push(obj);
         })
         items[index].filesInfo = filesInfo;
-
-
         that.setData({
           items,
         })
-        console.log(items);
+        // console.log(items);
       }
     })
   },
@@ -189,13 +235,20 @@ Page({
       //   phone: "17739753629"
       // },
       success: function (res) {
-
+        console.log(res)
+        //若续约token
+        res.header['nothing-token']
+          ?
+          wx.setStorageSync("token", res.header['nothing-token'])
+          :
+          console.log("nothing")
         let {items} = res.data.data;
         //增加flag标示
         //增加flag2标示
         items.forEach((item) => {
-          item.flag = false;
-          item.flag2 = false;
+          item.flag = false
+          item.flag2 = false
+          item.userList = false
         })
 
         that.setData({
@@ -211,14 +264,230 @@ Page({
       }
     })
   },
+  userChoose:function(e){
+    let index = e.currentTarget.dataset.index
+    let {users} = this.data
+    users[index].choose = !users[index].choose
+    this.setData({
+      users
+    })
+  },  
+  addMember:function(e){
+    let that = this;
+    let token = wx.getStorageSync('token')
+    let index = e.currentTarget.dataset.index;
+    let {items} = this.data
+    items[index].userList = !items[index].userList
+    console.log(items[index])
+    //取出已经存在的用户的id
+    let idArr = []
+    items[index].membersInfo.forEach((item, index) => {
+      idArr.push(item.id)
+    })
 
+    this.setData({
+      items
+    })
+    //避免多次请求
+    // if(!this.data.users.length){
+      wx.request({
+        url: 'http://nothing.natapp1.cc/user/list',
+        method: 'GET',
+        header: {
+          'content-type': 'application/json',
+          'nothing-token': token
+        },
+        success(res) {
+          //若续约token
+          console.log(res)
+          res.header['nothing-token']
+            ?
+            wx.setStorageSync("token", res.header['nothing-token'])
+            :
+            console.log("nothing")
+          let { users } = res.data.data
+          let  newUsers = []
+
+          users.forEach((item, index) => {
+            item.id != idArr[index]
+            ?
+            newUsers.push(item)
+            :
+            console.log("nothing")
+          })
+          console.log(idArr)
+          console.log(newUsers)
+          //为users添加各自的choose属性
+          newUsers.forEach((item, index) => {
+            item.choose = false
+          })
+          that.setData({
+            users: newUsers
+          })
+
+        },
+        fail(res) {
+          console.log(res)
+        }
+      })
+
+    // }
+    
+  },
+  addMemberBtn:function(){
+    console.log(":)")
+    let uids = []
+    let that = this
+    let token = wx.getStorageSync('token')
+    that.data.users.forEach((item) => {
+      item.choose
+        ?
+        uids.push(item.id)
+        :
+        console.log("nothing")
+    })
+    console.log(uids)
+    wx.request({
+      url: 'http://nothing.natapp1.cc/item/go',
+      method: "PUT",
+      data: {
+        uids,
+        id:this.data.id
+      },
+      header: {
+        'content-type': 'application/json',
+        'nothing-token': token
+      },
+      success(res) {
+        res.header['nothing-token']
+          ?
+          wx.setStorageSync("token", res.header['nothing-token'])
+          :
+          console.log("nothing")
+        console.log(res)
+      },
+      fail(res) {
+        console.log(res)
+      }
+    })
+  },
+  addFile:function(){
+    let that = this
+    wx.chooseMessageFile({
+      success(res) {
+        console.log(res)
+        // let files = that.data.files
+        // console.log(res)
+        // let { name } = res.tempFiles[0]
+        // let format = name.slice(name.lastIndexOf('.') + 1)
+        // if (res.tempFiles[0].type == 'image') {
+        //   format = 'image'
+        // }
+        // res.tempFiles[0].format = format
+        // files.unshift(res.tempFiles[0])
+        that.setData({
+          files:res.tempFiles[0]
+        })
+        console.log(that.data.files)
+        let token = wx.getStorageSync('token')
+        wx.uploadFile({
+          url: `http://nothing.natapp1.cc/file/upload/${that.data.itemName}/${that.data.files.name}`,
+          filePath: that.data.files.path,
+          name: 'file',
+          formData: {
+            // 'user': 'test'
+          },
+          header: {
+            'nothing-token': token
+          },
+          success(res) {
+              console.log(res)
+              //提交uids和name和fileUrls
+            let obj = JSON.parse(res.data)
+            console.log(obj.data.url)
+            let fileUrls = [obj.data.url]
+              wx.request({
+                url: 'http://nothing.natapp1.cc/item/go',
+                method: "put",
+                header: {
+                  'nothing-token': token
+                },
+                data: {
+                  id: that.data.id,
+                  fileUrls
+                },
+                success(res) {
+                  console.log(res)
+
+                },
+                fail() {
+                  console.log("LKJJJ")
+                }
+              })
+          },
+          fail() {
+            console.log(":(")
+          }
+        })
+        // console.log(that.data.files)
+        // wx.uploadFile({
+        //   url: putUrl, 
+        //   filePath: tempFilePaths[0],
+        //   name: 'file',
+        //   formData: {
+        //   },
+        //   success(res) {
+        //     console.log(":)")
+        //     const data = res.data
+        //     console.log(res);
+        //   },
+        //   fail() {
+        //     console.log("::(")
+        //   }
+        // })
+      }
+    })
+  },
+  logChange:function(e){
+    let textarea = e.detail.value
+    this.setData({
+      textarea
+    })
+  },
+  addLog:function(){
+    let that = this
+    let token = wx.getStorageSync('token')
+    console.log(this.data.textarea)
+    wx.request({
+      url: 'http://nothing.natapp1.cc/item/go',
+      method: "PUT",
+      data: {
+        log:this.data.textarea,
+        id: this.data.id
+      },
+      header: {
+        'content-type': 'application/json',
+        'nothing-token': token
+      },
+      success(res) {
+        res.header['nothing-token']
+          ?
+          wx.setStorageSync("token", res.header['nothing-token'])
+          :
+          console.log("nothing")
+        console.log(res)
+      },
+      fail(res) {
+        console.log(res)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
     
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */

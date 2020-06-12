@@ -75,13 +75,32 @@ background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
   font-size: 50rpx;
 }
 
-.sign-tip{
+.bottom-box{
     z-index: 50;
-  position: absolute;
-  width: 90vw;
+
+  position: absolute; 
   left: 50%;
   transform: translateX(-50%);
-  bottom: 10vh;
+  bottom: 5vh;
+}
+.activity-tip{
+  text-align: center;
+    border-radius: 50rpx;
+  width: 30vw;
+  height: 6vh;
+  line-height: 6vh;
+  color: white;
+  margin: 10rpx auto;
+  box-shadow: 0 0 30rpx  #4481eb;
+background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);
+}
+
+.sign-tip{
+  /* position: absolute; */
+  width: 90vw;
+  /* left: 50%;
+  transform: translateX(-50%);
+  bottom: 10vh; */
   height: 60rpx;
   line-height: 0rpx;
   border-radius: 50rpx;

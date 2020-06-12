@@ -44,8 +44,8 @@
             <!-- <view class="">  -->
       <view bindtap='goto' data-index='4' class="bg-gradual-blue padding radius shadow-blur index-box  index-box-5">
     <text class="cuIcon-{{icons[4].name}} margin-top-sm  text-white icon-lg-size main-icon-lg"></text>
-    <view  class="text-lg margin-top-sm" >讨论</view>
-    <view class='text-ececec txt-ellipsis'>日常讨论留言版</view>
+    <view  class="text-lg margin-top-sm" >公告</view>
+    <view class='text-ececec txt-ellipsis'>实验室公告栏</view>
       </view>
     <!-- </view> -->
  </view>

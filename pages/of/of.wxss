@@ -2,12 +2,15 @@
   position: relative;
   z-index: 100;
 }
+.loading-box{
+  margin: 0 auto;
+  text-align: center;
+}
 .loading-btn{
   width: 80rpx;
   height: 80rpx;
-
-
   animation-name: loading;
+
   animation-duration: 0.6s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
@@ -20,7 +23,8 @@
     transform: rotate(360deg);
   }
 }
-.name-input-box{
+.name-input-box,
+.git-input-box{
   width: 90vw;
   padding: 5rpx;
   margin: 30rpx auto;
@@ -36,32 +40,65 @@
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  justify-content: space-around;
+  justify-content: flex-start;
   background-color: white;
   margin: 10rpx auto;
   border: 1px solid #f0f0f0;
   border-radius: 10rpx;
   padding: 5rpx;
   padding-bottom: 70rpx;
+  transition-duration: 1s;
 
 }
 .avatar-box{
   text-align: center;
-  flex-basis: 30%;
+  flex-basis: 33%;
 
-  width: 200rpx;
+  /* width: 33%; */
   /* height: 200rpx; */
-  padding: 20rpx;
+  /* padding: 20rpx; */
 
 /* border:2px solid #40e0d0; */
-  border: 1px solid #f0f0f0;
+  /* border: 1px solid #f0f0f0; */
   border-radius: 5rpx;
-  margin: 5rpx;
+  margin: 10rpx 0;
 }
 .avatar-box image{
-  width: 130rpx;
-  height: 130rpx;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
+  display: block;
+}
+.avatar-sbox{
+  color: #69606b;
+  display: inline-block;
+  position: relative;
+  padding: 20rpx;
+  transition-duration: 0.1s;
+    /* border:2px solid #c2f0fc;
+box-shadow:0 0 20rpx #c2f0fc;
+border-radius:20rpx */
+}
+
+.avatar-sbox-dot{
+  width: 10rpx;
+  height: 10rpx;
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+  border-radius: 50%;
+  background-color: #c2f0fc;
+}
+
+.avatar-sbox-choose{
+  border:2px solid #c2f0fc;
+box-shadow:0 0 20rpx #c2f0fc;
+border-radius:20rpx
+}
+
+.avatar-box .icon{
+  font-size: 25rpx;
+  color: #32e0c4;
 }
 .avatar-Box-btn{
   /* width: 50rpx; */
@@ -95,6 +132,7 @@
     border: 1px solid #f0f0f0;
   border-radius: 10rpx;
   margin: 10rpx 0;
+  position: relative;
 }
 .file-box-add{
     text-align: center;
@@ -106,6 +144,7 @@
 .file-box-add text{
   font-size: 60rpx;
   color: #888888;
+  position: relative;
 }
 .file-box image{
   width: 75rpx;
@@ -120,6 +159,27 @@
 .of-sub-btn{
   width: 90vw;
   margin: 0 auto;
+}
+
+.fileDelBtn{
+  background-color: white;
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 10rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  /* background-color: #d92027; */
+  border-radius: 50%;
+  z-index: 100;
+}
+
+.fileDelBtn text{
+  margin: 0;
+  line-height: 40rpx;
+  font-size: 30rpx;
+  color: #d92027;
+  /* color: white; */
 }
 
 

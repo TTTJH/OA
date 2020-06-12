@@ -1,0 +1,67 @@
+.container{
+  position: relative;
+  z-index: 100;
+  /* height: 100vh; */
+}
+
+.cf-form{
+  width: 90vw;
+  min-height: 60vh;
+  margin: 5vw auto;
+  border-radius: 10rpx;
+  box-shadow: 0 0 20rpx #f0f0f0;
+}
+
+.cf-btn{
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.cf-txt-box{
+  position: absolute;
+  z-index: 100;
+  width: 90vw;
+  bottom: 10rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cf-txt1,
+.cf-txt2{
+  text-align: center;
+  color: #69606b;
+  margin: 10rpx 0;
+}
+
+.cf-txt1{
+  font-size: 24rpx;
+}
+
+.cf-txt2{
+  font-size: 22rpx;
+}
+
+.circle1{
+  z-index: 0;
+  width: 70vw;
+  height: 70vw;
+  position: fixed;
+  left: -35vw;
+  bottom: -20px;
+  border-radius: 50%;
+  /* background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); */
+  background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+}
+
+
+.circle2{
+  z-index: 0;
+  width: 70vw;
+  height: 70vw;
+  position: fixed;
+  right: -35vw;
+  top: 30px;
+  border-radius: 50%;
+  /* background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); */
+  background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+}

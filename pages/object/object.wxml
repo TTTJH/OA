@@ -4,6 +4,7 @@
 项目
 </view>
 </cu-custom>
+
 <!-- <view class='clearfix object-box bg-gradual-blue text-center'>
   <view class='object-box-arrow'>
   <text class='cuIcon-refresharrow'></text>
@@ -66,7 +67,7 @@
 <view>加载中...</view>
 </view>
 
-<view bindtap='openDetail'  data-index="{{index}}"wx:for="{{items}}"  class="clearfix object-box bg-gradual-red text-center {{item.flag ? 'object-detail' : 'none'}} {{item.flag2 ? 'object-detail-over' : 'none'}}">
+<view bindtap='openDetail'  data-index="{{index}}"wx:for="{{items}}"  class="clearfix object-box {{boxClass[index%3]}}  text-center {{item.flag ? 'object-detail' : 'none'}} {{item.flag2 ? 'object-detail-over' : 'none'}}">
 <view class='object-box-arrow' catchtap='closeDetail' data-index="{{index}}"> 
   <text class="{{item.flag?'cuIcon-discover':'cuIcon-refresharrow'}}"></text>
 </view>
@@ -75,7 +76,7 @@
   </view>
 
   <view class='object-box-time'> 
-    2019.12.6
+    {{item.createTime}}
   </view> 
   
   <view class='object-icon-Box'>
@@ -104,12 +105,28 @@
         <image class= src='/images/{{item.format}}.png'></image>
         <text class='object-file-name text-black'>{{item.name}}</text>
       </view>
+      <view class='add-file-btn' bindtap='addFile'>
+                    <text class='cuIcon-add'></text>
+      </view>
 
 
   </view>
       <view class='item-title'  wx:if="{{item.flag}}">
         <text class='cuIcon-friend '></text>  参与成员
       </view>
+
+      <scroll-view wx:if="{{item.userList}}" class='member-list-box' scroll-x="true">
+<!-- <view  class='member-list'> -->
+      <view bindtap='userChoose' data-index="{{index}}" class="user-box {{item.choose ? 'user-box-choose' : ''}}" wx:for="{{users}}">
+        <view class='dot' wx:if="{{item.choose}}"></view>
+        <image  src="{{item.avater}}"></image>
+          <text>{{item.name}}</text>
+      </view>
+        <button class="cu-btn block bg-blue margin-tb-sm lg"  catchtap='addMemberBtn'>
+    <text class="cuIcon-loading2 iconfont-spin"></text> 加载</button>
+      <!-- </view> -->
+      </scroll-view>
+      
 <view  class="objetc-member-avatar-Box {{item.flag?'item-avatar-show':'item-avatar-hide'}} ">
   <!-- <image src='http://139.9.115.248/imgs/gif.gif'></image>
     <image src='http://139.9.115.248/imgs/gif.gif'></image>
@@ -120,7 +137,11 @@
                       <image src='http://139.9.115.248/imgs/gif.gif'></image>
             <image src='http://139.9.115.248/imgs/gif.gif'></image> -->
             <image wx:for="{{item.membersInfo}}" src='{{item.avater}}'></image>
+            <view class='add-member-btn' bindtap='addMember' data-index="{{index}}">
+              <text class='cuIcon-add'></text>
+            </view>
 </view>
+
 
       <view  class='item-title'   wx:if="{{item.flag}}">
         <text class='cuIcon-time ' ></text>  项目日志
@@ -128,6 +149,14 @@
 
     <view class="logs-Box {{item.flag?'logs-Box-show':'logs-Box-hide'}}">
     <!-- <view wx:for="{{item.logs}}" class='logs-box'> -->
+    		<textarea class='logs-textarea' maxlength="-1" disabled="{{modalName!=null}}" bindinput="logChange" placeholder="多行文本输入框"> </textarea>
+         <button class="cu-btn block bg-blue margin-tb-sm lg" bindtap='addLog'>
+    <text class="cuIcon-loading2 iconfont-spin"></text> 加载</button>
+    <view class='logs-box'>
+                <view class="logs-line-circle-add">
+                  <text class='cuIcon-add'></text>
+            </view>
+    </view>
       <view wx:for="{{item.logs}}" class="{{index%2==0?'logs-box':'logs-box-right'}}">
             <view class="{{index%2==0?'logs-line-circle':'logs-line-circle-right'}}">
 
@@ -142,6 +171,7 @@
 
             <text class="{{index%2==0?'logs-icon-right':'logs-icon'}} {{logsIcon[index%4]}}"></text>
       </view>
+
 
 
 

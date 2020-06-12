@@ -4,9 +4,28 @@
 资源
 </view>
 </cu-custom>
-
+  <!-- <towxml nodes="{{article}}"/> -->
 <!-- <rm/> -->
 <rd/>
+<view class="container">
+<view  wx:if="{{loading}}" class='loading-box'>
+<image class='loading-btn' src='/images/loading.png'></image>
+<view>加载中...</view>
+</view>
+
+  <view class="book" data-index="{{item.id}}"  bindtap='goto' wx:for="{{resources}}">
+      <view class='txt-box'>
+              <view class='title'>{{item.title}}</view>
+               <text class="{{iconsList[index%5]}}"></text>
+      </view>
+               <!-- <view class='author'>由tutu上传</view> -->
+  </view>
+
+ 
+
+
+   
+</view>
 
 <!-- <view class='resource-Box'>
 

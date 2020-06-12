@@ -1,0 +1,98 @@
+.container{
+  z-index: 100;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  /* transform: translate3d(-50%,-50%,0); */
+}
+.sign-box{
+  width: 20vw;
+  height: 20vw;
+  /* position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%); */
+  margin: 30rpx auto;
+  border-radius: 50%;
+  z-index: 100;
+}
+
+.input-Box{
+  width: 90vw;
+  margin: 50rpx auto;
+  height: 20vh;
+  display: flex;
+  justify-content: space-around;
+  /* border: 1px solid; */
+}
+
+.input-box{
+  /* border: 1px solid pink; */
+  flex-basis: 22%;
+  position: relative;
+}
+
+.input-box input{
+  position: absolute;
+  height: 100%;
+  bottom: 10rpx;
+  font-size: 16vh;
+  text-align: center;
+  color: #69606b;
+  border-bottom: 1px solid #69606b;
+}
+
+.time-choose{
+  border-radius: 10rpx;
+  margin: 30rpx auto;
+  height: 80rpx;
+}
+
+.sf-btn{
+  /* width: 90vw; */
+  margin: 0 auto;
+}
+.sf-txt-box{
+  z-index: 100;
+  width: 100vw;
+  position: absolute;
+  bottom: 50rpx;
+}
+
+.sf-txt1{
+  font-size: 22rpx;
+  text-align: center;
+  color: #69606b;
+}
+
+.sf-txt2{
+  font-size:20rpx;
+    text-align: center;
+  color: #69606b;
+}
+
+.circle1{
+  z-index: 0;
+  width: 70vw;
+  height: 70vw;
+  position: absolute;
+  left: -35vw;
+  bottom: -20px;
+  border-radius: 50%;
+  /* background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); */
+  background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+}
+
+
+.circle2{
+  z-index: 0;
+  width: 70vw;
+  height: 70vw;
+  position: absolute;
+  right: -35vw;
+  top: 30px;
+  border-radius: 50%;
+  /* background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); */
+  background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+}

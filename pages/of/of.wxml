@@ -7,55 +7,71 @@
 
 <view class='of-container'>
   <view class='name-input-box' >
-		<input placeholder="项目名称"></input>
+		<input placeholder="项目名称" bindinput="watchName"></input>
+  </view>
+    <view class='git-input-box' >
+		<input placeholder="git地址" bindinput="watchGit"></input>
   </view>
 
   <view class='avatar-Box'>
-    <view class='avatar-Box-btn '  >
-      <text class='cuIcon-fold'></text>
+    <view class='avatar-Box-btn ' bindtap='openUserDetail' >
+
+      <text class="{{openDetail?'cuIcon-fold':'cuIcon-unfold'}}"></text>
     </view>
 <view  wx:if="{{loading}}" class='loading-box'>
 <image class='loading-btn' src='/images/loading.png'></image>
-<view>加载中...</view>
+<!-- <view>加载中...</view> -->
 </view>
-    <!-- <view class='avatar-box'>
-      <image src='http://139.9.115.248/imgs/gif.gif'></image>
-      <view>图剑豪</view>
+<view wx:for="{{users}}" class='avatar-box' bindtap='choose' data-index="{{index}}">
+   <view  class=" avatar-sbox {{item.choose ? 'avatar-sbox-choose' : ''}}">
+      <image src="{{item.avater}}"></image>
+      <view>{{item.name}}</view>
+      <view wx:if="{{item.choose}}" class='avatar-sbox-dot'></view>
     </view>
+</view>
 
+<!-- 
     <view class='avatar-box'>
-      <image src='http://139.9.115.248/imgs/gif.gif'></image>
+          <view class='avatar-sbox'>
+                <image src='http://139.9.115.248/imgs/gif.gif'></image>
       <view>图剑豪</view>
+          </view>
     </view>
-
-     <view class='avatar-box'>
-      <image src='http://139.9.115.248/imgs/gif.gif'></image>
-      <view>图剑豪</view>
-    </view>
-
     <view class='avatar-box'>
-      <image src='http://139.9.115.248/imgs/gif.gif'></image>
+          <view class='avatar-sbox'>
+                <image src='http://139.9.115.248/imgs/gif.gif'></image>
       <view>图剑豪</view>
-    </view>
-
-    <view class='avatar-box'>
-      <image src='http://139.9.115.248/imgs/gif.gif'></image>
+          </view>
+    </view>    <view class='avatar-box'>
+          <view class='avatar-sbox'>
+                <image src='http://139.9.115.248/imgs/gif.gif'></image>
       <view>图剑豪</view>
-    </view>
-
-     <view class='avatar-box'>
-      <image src='http://139.9.115.248/imgs/gif.gif'></image>
+          </view>
+    </view>    <view class='avatar-box'>
+          <view class='avatar-sbox'>
+                <image src='http://139.9.115.248/imgs/gif.gif'></image>
       <view>图剑豪</view>
+          </view>
+    </view>    <view class='avatar-box'>
+          <view class='avatar-sbox'>
+                <image src='http://139.9.115.248/imgs/gif.gif'></image>
+      <view>图剑豪</view>
+          </view>
     </view> -->
 
   </view>
 
   <view class='file-Box'>
-    <view class='file-box'>
-      <image src='/images/doc.png'></image>
-      <text>Readme.doc</text>
-    </view>
 
+    <view class='file-box' wx:for="{{files}}">
+      <image src="/images/{{item.format}}.png"></image>
+      <text>{{item.name}}</text>
+
+      <view class='fileDelBtn' bindtap='fileDel' data-index="{{index}}">
+      <text class='cuIcon-delete'></text>
+      </view>
+    </view>
+<!-- 
         <view class='file-box'>
       <image src='/images/doc.png'></image>
       <text>Readme.doc</text>
@@ -64,17 +80,18 @@
     <view class='file-box'>
       <image src='/images/doc.png'></image>
       <text>Readme.doc</text>
-    </view>
+    </view> -->
 
-    <view class='file-box-add'>
+    <view class='file-box-add' bindtap='uploadItem'>
       <text class='cuIcon-add'></text>
     </view>
   </view>
 
 
-    <button class="cu-btn block bg-blue margin-tb-sm lg of-sub-btn">
-    <text class="cuIcon-loading2 iconfont-spin"></text> 
-    加载
+    <button class="cu-btn block bg-blue margin-tb-sm lg of-sub-btn" bindtap='submit'>
+    <text wx:if="{{submiting}}" class="cuIcon-loading2 iconfont-spin"></text> 
+        <text wx:if="{{!submiting}}">提交</text>
+     
     </button>
 
 </view>

@@ -44,6 +44,22 @@ border: 2px solid white;
 
 box-shadow: 0 70rpx 190rpx black;
 }
+
+.del-btn{
+width:175rpx;
+height:175rpx;
+position:absolute;
+right:65rpx;
+top:-15rpx;
+border-radius:50%;
+background-color: white;
+opacity: 0.7;
+text-align: center;
+line-height: 175rpx;
+font-size: 80rpx;
+color: #d92027;
+border: 2px solid white;
+}
 .text-f0f0f0{
   color: #f0f0f0;
 }
@@ -51,6 +67,8 @@ box-shadow: 0 70rpx 190rpx black;
 .text-unhighlight{
   font-size: 22rpx;
 }
+
+
 
 .member-class{
   position: absolute;

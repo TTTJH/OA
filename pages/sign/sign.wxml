@@ -35,11 +35,16 @@
     <view  class="text-lg margin-top-sm " >TJH已签到</view>
     </view>
 
-
+<view class='bottom-box'>
+      <view bindtap='goto' wx:if="{{code}}" class='activity-tip'>
+        活动签到!
+      </view>
       <view class="sign-tip bg-gradual-blue padding radius shadow-blur text-center">
     <text class="cuIcon-activity    text-white icon-lg-size"></text>
     <text  class="" >当前签到用于记录于实验室学习时长</text>
       </view>
+</view>
+
 
       <view class='circle1'>
 </view>
