@@ -130,6 +130,7 @@
 //   }
 
 // })
+let utils = require("../../utils/util.js")
 Component({
 
   behaviors: [],
@@ -171,55 +172,61 @@ Component({
           'nothing-token': token
         },
         success(res) {
-          let message = []
-          let obj = {}
-
-          let data = res.data.data.noticeBoard
-          for (let i = 0; i < data.length; i = i + 2) {
+          // console.log(res.data.data.error)
+          if (res.data.data.error) {
+            utils.judgeToken(res.data.data.error,"dont")
+          } else {
+            let message = []
             let obj = {}
-            data[i].indexOf(" ")
-            obj.time = data[i + 1].slice(data[i + 1].indexOf(" ") + 1)
-            obj.day = data[i + 1].slice(0, data[i + 1].indexOf(" "))
-            obj.content = data[i]
-            message.push(obj)
-          }
-                    //整理后端数据
-          /*
-          arr =   [
-            {
-              data:06-11,
-              messages:[{...},{...}],
-            },
-            {
-              data:05-20,
-              messages:[{...},{...}],
+
+            let data = res.data.data.noticeBoard
+            for (let i = 0; i < data.length; i = i + 2) {
+              let obj = {}
+              data[i].indexOf(" ")
+              obj.time = data[i + 1].slice(data[i + 1].indexOf(" ") + 1)
+              obj.day = data[i + 1].slice(0, data[i + 1].indexOf(" "))
+              obj.content = data[i]
+              message.push(obj)
             }
-            ]
-          */
-          console.log(message)
-
-          let arr = []
-          for (let i = 0; i < message.length - 1; i++) {
-            let obj = {}
-            obj.day = message[i].day
-            obj.messages = []
-            obj.messages.push(message[i])
-            for (let j = i + 1; j < message.length; j++) {
-              if (message[j].day == obj.day) {
-                obj.messages.push(message[j])
-                i = j - 1
+            //整理后端数据
+            /*
+            arr =   [
+              {
+                data:06-11,
+                messages:[{...},{...}],
+              },
+              {
+                data:05-20,
+                messages:[{...},{...}],
               }
+              ]
+            */
+            console.log(message)
+
+            let arr = []
+            for (let i = 0; i < message.length - 1; i++) {
+              let obj = {}
+              obj.day = message[i].day
+              obj.messages = []
+              obj.messages.push(message[i])
+              for (let j = i + 1; j < message.length; j++) {
+                if (message[j].day == obj.day) {
+                  obj.messages.push(message[j])
+                  i = j - 1
+                }
+              }
+              arr.push(obj)
+              // if (i != 0 && arr[i].day == arr[i - 1].day) {
+              //   arr = arr.slice(0, i)
+              // }
             }
-            arr.push(obj)
-            // if (i != 0 && arr[i].day == arr[i - 1].day) {
-            //   arr = arr.slice(0, i)
-            // }
+            console.log(arr)
+            that.setData({
+              notices: arr,
+              loading: false
+            })
           }
-          console.log(arr)
-          that.setData({
-            notices: arr,
-            loading: false
-          })
+        
         },
         fail() {
           console.log(":(")

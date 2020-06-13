@@ -136,7 +136,7 @@ Page({
                   success(res) {
                     console.log(res)
                     wx.navigateTo({
-                      url: "/pages/index/index"
+                      url: '/pages/index/index?tip=5',
                     })
                   },
                   fail() {

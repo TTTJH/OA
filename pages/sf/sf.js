@@ -12,7 +12,7 @@ Page({
     value2:"",
     value3:"",
     value4:"",
-    time: '12:01',
+    time: '',
   },
   TimeChange(e) {
     this.setData({
@@ -23,7 +23,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    //设置picker的初始时间为当前时间
+    let date = new Date()
+    let time = date.getHours() + ":" + date.getMinutes()
+    this.setData({
+      time
+    })
+    console.log(time)
   },
   submit:function(){
     console.log(this.data.value1)
@@ -62,6 +68,9 @@ Page({
       },
       fali(res){
         console.log(res)
+        wx.navigateTo({
+          url: '/pages/index/index?tip=4',
+        })
       }
     })
   },
@@ -162,7 +171,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**

@@ -1,5 +1,8 @@
+let utils = require("../../utils/util.js")
 Page({
   data: {
+    modal:"",
+    delName:"",
     signing: false,
     bgColor:[
       // 'bg-gradual-orange',
@@ -13,20 +16,13 @@ Page({
     users:[],
     loading:true,
   },
-  delUser(e){
-    let {index} = e.currentTarget.dataset
-    let {users} = this.data
-    users[index].delStatus = !users[index].delStatus
+  hideModal:function(e){
     this.setData({
-      users
+      modal: '',
     })
-  },
-  del(e){
-    let that = this
-    let { index } = e.currentTarget.dataset
-    let token = wx.getStorageSync('token')
-
-    wx.request({
+    if (e.currentTarget.dataset.index){
+   //删除请求在这里
+        wx.request({
       url: `http://nothing.natapp1.cc/user/${this.data.users[index].id}`,
       method: 'DELETE',
       header: {
@@ -40,11 +36,36 @@ Page({
         that.setData({
           users
         })
+        wx.navigateTo({
+          url: '/pages/index/index?tip=3',
+        })
       },
       fail(res){
 
       }
     })
+    }
+ 
+  },
+  delUser(e){
+    let {index} = e.currentTarget.dataset
+    let {users} = this.data
+    users[index].delStatus = !users[index].delStatus
+
+    this.setData({
+
+      users
+    })
+  },
+  del(e){
+    let that = this
+    let { index } = e.currentTarget.dataset
+    let token = wx.getStorageSync('token')
+    this.setData({
+      modal: 'show',
+      delName:this.data.users[index].name
+    })
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -61,21 +82,29 @@ Page({
         'nothing-token': token
       },
       success(res){
-        //若续约token
-        console.log(res)
-        res.header['nothing-token']
-        ?
-        wx.setStorageSync("token", res.header['nothing-token'])
-        :
-        console.log("nothing")
-        let {users} = res.data.data
-        users.forEach((item, index) => {
-          item.delStatus = false
-        })
-        that.setData({
-          users,
-          loading:false,
-        })
+        //假装token过期状态测试
+        // utils.judgeToken("token verify fail")
+        // //判断token是否过期
+        if (res.data.data.error){
+          utils.judgeToken(res.data.data.error)
+        }else{
+          //若续约token
+          console.log(res)
+          res.header['nothing-token']
+            ?
+            wx.setStorageSync("token", res.header['nothing-token'])
+            :
+            console.log("nothing")
+          let { users } = res.data.data
+          users.forEach((item, index) => {
+            item.delStatus = false
+          })
+          that.setData({
+            users,
+            loading: false,
+          })
+        }
+       
 
       },
       fail(res){

@@ -5,6 +5,55 @@
   display: table;
   clear: both;
 }
+.tip{
+  /* //无语 */
+  z-index: 10000;
+  position: fixed;
+  left: 50%;
+  top: -10%;
+  transform: translateX(-50%);
+  padding: 10rpx 15rpx;
+  color: #69606b;
+  display: inline-block;
+  border-radius: 20rpx;
+  background-color: white;
+  box-shadow: 0 0 30rpx #f0f0f0;
+
+  animation-name: tip;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+.tip .icon{
+  color: #0779e4;
+}
+
+@keyframes tip{
+  0%{
+  top: -10%;
+  opacity: 1;
+  }
+  90%{
+    top: 10%;
+      opacity: 1;
+  }
+  100%{
+        top: 10%;
+    opacity: 0;
+  }
+}
+.small-loading-box{
+  margin-top: 15rpx;
+  text-align: center;
+  color: white;
+  font-size: 40rpx;
+
+
+  animation-name: loading;
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
 .loading-box{
     position: absolute;
   left: 50%;
@@ -177,10 +226,21 @@
   text-align: center;
   font-size: 50rpx;
 }
+.addMemberBtn{
+  position: absolute;
+  width: 100vw;
+  bottom: 30rpx;
+  border-radius: 0;
+}
+.nothing-tip{
+  color: #69606b;
+  text-align: center;
+}
 
 .member-list-box{
   /* width: 100vw; */
   /* overflow-x: scroll; */
+  position: relative;
   height:300rpx;
   display: flex;
   white-space: nowrap;
@@ -265,12 +325,27 @@ border-radius:20rpx
     transform: rotate(360deg);
   }
 }
+.logs-add-box{
+  position: relative;
+  display: inline-block;
+}
+.logs-add-box button{
+position:absolute;
+width:25%;
+bottom:30rpx;
+margin:0;
+border-radius:50rpx;
+left: 50%;
+transform: translateX(-50%);
+}
 .logs-textarea{
   height: 20vh;
   margin: 20rpx auto;
   background-color: white;
   border-radius: 20rpx;
   color: black;
+  padding-top: 20rpx;
+  padding-bottom: 30rpx;
 }
 .logs-Box{
   margin-top: 10rpx;

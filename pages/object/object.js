@@ -1,11 +1,15 @@
+let utils = require("../../utils/util.js")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    addLogsIng:false,
+      tip:"",
       loading:true,
       itemName:"",
+    addingMember:false,
       id:"",
       items:[],
       users:[],
@@ -125,23 +129,23 @@ Page({
         // console.log(res)
         let items = that.data.items;
         items[index].membersInfo = res.data.data.memebers;
+        items[index].logs = res.data.data.logs;
         //模拟log
-        let logs = [
-          {
-            time: "2020-05-22T16:57:23",
-            log: "今天修补了迷之bug",
-          },
-          {
-            time: "2020-05-22T16:57:23",
-            log: "摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)",
-          },
-          {
-            time: "2020-05-22T16:57:23",
-            log: "晚上去吃些什么好呢",
-          },
-        ]
-        // items[index].logs = res.data.data.logs;
-        items[index].logs = logs;
+        // let logs = [
+        //   {
+        //     time: "2020-05-22T16:57:23",
+        //     log: "今天修补了迷之bug",
+        //   },
+        //   {
+        //     time: "2020-05-22T16:57:23",
+        //     log: "摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)摸鱼的一个下午:)",
+        //   },
+        //   {
+        //     time: "2020-05-22T16:57:23",
+        //     log: "晚上去吃些什么好呢",
+        //   },
+        // ]
+        // items[index].logs = logs;
         //模拟files的url进行测试
         let fileUrls = [
           'http://139.9.115.248/imgs/test1.doc',
@@ -163,9 +167,6 @@ Page({
         ]*/
         // console.log(files)
           Object.keys(files).forEach((key, index) => {
-            
-
-            
             let name = key.slice(key.indexOf('/')+1)
             // console.log(name)
             let url = files[key]
@@ -222,40 +223,34 @@ Page({
         'content-type': 'application/json',
         'nothing-token': token
       },
-      // header: {
-      //   'Content-Type': 'application/json',
-      // },
-      // data: {
-      //   id: "8",
-      //   name: "tututu",
-      //   gradle: "17",
-      //   gender: "男",
-      //   belongClass: "3G软件1702",
-      //   email: "1149858111@qq.com",
-      //   phone: "17739753629"
-      // },
       success: function (res) {
-        console.log(res)
-        //若续约token
-        res.header['nothing-token']
-          ?
-          wx.setStorageSync("token", res.header['nothing-token'])
-          :
-          console.log("nothing")
-        let {items} = res.data.data;
-        //增加flag标示
-        //增加flag2标示
-        items.forEach((item) => {
-          item.flag = false
-          item.flag2 = false
-          item.userList = false
-        })
+        if (res.data.data.error) {
+          utils.judgeToken(res.data.data.error)
+        } else {
+          console.log(res)
+          //若续约token
+          res.header['nothing-token']
+            ?
+            wx.setStorageSync("token", res.header['nothing-token'])
+            :
+            console.log("nothing")
+          let { items } = res.data.data;
+          //增加flag标示
+          //增加flag2标示
+          items.forEach((item) => {
+            item.flag = false
+            item.flag2 = false
+            item.userList = false
+            item.textareaStatus = false
+          })
 
-        that.setData({
-          items,
-          loading:false,
-        })
-        console.log(items);
+          that.setData({
+            items,
+            loading: false,
+          })
+          console.log(items);
+        }
+
       },
       fail: function () {
       },
@@ -334,8 +329,13 @@ Page({
     // }
     
   },
-  addMemberBtn:function(){
+  addMemberBtn:function(e){
+    let { index } = e.currentTarget.dataset
+
     console.log(":)")
+    this.setData({
+      addingMember:true
+    })
     let uids = []
     let that = this
     let token = wx.getStorageSync('token')
@@ -364,6 +364,16 @@ Page({
           wx.setStorageSync("token", res.header['nothing-token'])
           :
           console.log("nothing")
+        that.setData({
+          addingMember: false
+        })
+        that.requestDetail(index)
+        //关闭scroll-view
+        let {items} = that.data
+        items[index].userList = false
+        this.setData({
+          items
+        })
         console.log(res)
       },
       fail(res) {
@@ -371,8 +381,9 @@ Page({
       }
     })
   },
-  addFile:function(){
+  addFile:function(e){
     let that = this
+    let {index} = e.currentTarget.dataset
     wx.chooseMessageFile({
       success(res) {
         console.log(res)
@@ -418,7 +429,11 @@ Page({
                 },
                 success(res) {
                   console.log(res)
-
+                  //添加文件成功
+                  that.requestDetail(index)
+                  that.setData({
+                    tip:"添加文件成功!"
+                  })
                 },
                 fail() {
                   console.log("LKJJJ")
@@ -454,7 +469,18 @@ Page({
       textarea
     })
   },
+  addLogCircle:function(e){
+    let {index} = e.currentTarget.dataset
+    let { items } = this.data
+    items[index].textareaStatus = !items[index].textareaStatus
+    this.setData({
+      items
+    })
+  },
   addLog:function(){
+    this.setData({
+      addLogsIng:true
+    })
     let that = this
     let token = wx.getStorageSync('token')
     console.log(this.data.textarea)
@@ -476,6 +502,10 @@ Page({
           :
           console.log("nothing")
         console.log(res)
+        that.setData({
+          addLogsIng: false,
+          tip:"添加成功!"
+        })
       },
       fail(res) {
         console.log(res)

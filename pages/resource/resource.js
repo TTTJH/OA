@@ -1,3 +1,4 @@
+let utils = require("../../utils/util.js")
 //获取应用实例
 const app = getApp();
 Page({
@@ -61,12 +62,16 @@ Page({
         'nothing-token': token
       },
       success(res){
-        console.log(res)
-        let resources = res.data.data.resources
-        that.setData({
-          resources,
-          loading:false
-        })
+        if (res.data.data.error) {
+          utils.judgeToken(res.data.data.error)
+        } else {
+          console.log(res)
+          let resources = res.data.data.resources
+          that.setData({
+            resources,
+            loading: false
+          })
+        }
       },
       fail(res){
 

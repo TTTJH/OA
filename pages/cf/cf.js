@@ -36,7 +36,7 @@ Page({
           console.log(res)
           console.log(":)")
           wx.navigateTo({
-            url: '/pages/index/index',
+            url: '/pages/index/index?tip=7',
           })
         }
       })

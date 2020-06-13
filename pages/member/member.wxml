@@ -10,6 +10,27 @@
 <view>加载中...</view>
 </view>
 
+<view class="cu-modal {{modal=='show'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <!-- <view class="content">Modal标题</view> -->
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      确定删除 {{delName}} ?
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-blue text-blue" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-blue margin-left" bindtap="hideModal">确定</button>
+
+      </view>
+    </view>
+  </view>
+</view>
+
 <view class='member-Box'>
     <!-- <view class="padding-sm "> -->
      <view wx:for="{{users}}" class="member-box {{bgColor[index%4]}} padding radius shadow-blur"
@@ -24,7 +45,7 @@
               
               </image>
     <view class='del-btn' wx:if="{{item.delStatus}}" bindtap='del' data-index="{{index}}">
-      x
+      <text class='cuIcon-roundclose'></text>
     </view>
     </view>
 

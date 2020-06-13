@@ -2,6 +2,9 @@
 
 <main wx:if="{{curPage=='main'}}"></main>
 <mine wx:if="{{curPage=='mine'}}"></mine> 
+<view class='tip'  wx:if="{{tip}}">
+<text class='icon cuIcon-roundcheck'></text>  {{tip}}
+</view>
 <view class='bar-tag {{tagStatusClass}} {{hide}}' bindtap='tagChange'>
   <view class='add-Box' >
       <view class='add-box  {{iconStatusClass[0]}} {{hide}}' bindtap='goto' data-index='0' >

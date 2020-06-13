@@ -59,6 +59,9 @@ Page({
       },
       success(res) {
         console.log(res)
+        wx.navigateTo({
+          url: '/paegs/index/index?tip=2',
+        })
       },
       fali(res) {
         console.log(res)

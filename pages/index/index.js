@@ -3,6 +3,7 @@ const app = getApp()
 
 Page({
   data:{
+    tip:"",
     tagStatusClass:"",
     iconStatusClass:[],
     hide:"hide",
@@ -26,6 +27,7 @@ Page({
     })
   },
   uploadResource(){
+    let that = this
     wx.chooseMessageFile({
       success(res) {
         console.log(res);
@@ -57,6 +59,9 @@ Page({
               } ,
               success(res){
                 console.log(res)
+                that.setData({
+                  tip:"添加成功"
+                })
               },
               fail(res){
                 console.log(":(")
@@ -161,6 +166,46 @@ Page({
         })
       },500)//此秒数与tagfadeout的duration相对应
       
+    }
+  },
+  onLoad:function(option){
+    console.log(option.curPage)
+    if(option.tip == 1){
+      //提示文字应该是 "签到成功!"
+      this.setData({
+        tip:"签到成功!"
+      })
+    }else if(option.tip == 2){
+      //提示文字应该是"活动签到成功!""
+      this.setData({
+        tip: "活动签到成功!"
+      })
+    }else if(option.tip == 3){
+      this.setData({
+        tip: "删除成功!"
+      })
+    }else if(option.tip == 4){
+      this.setData({
+        tip: "发布成功!"
+      })
+    } else if (option.tip == 5) {
+      this.setData({
+        tip: "添加成功!"
+      })
+    } else if (option.tip == 6) {
+      this.setData({
+        tip: "添加成功!"
+      })
+    } else if (option.tip == 7) {
+      this.setData({
+        tip: "发布成功!"
+      })
+    }
+    if(option.curPage){
+      //如果存在,证明是utils函数跳转,需要到Mine组件处
+      this.setData({
+        curPage: option.curPage
+      })
     }
   },
   /**

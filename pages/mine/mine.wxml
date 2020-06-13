@@ -3,7 +3,8 @@
 </cu-custom>
 
 <view class='mine-title'>
-  <button class='login-btn' wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"><text class='cuIcon-emoji'></text></button>
+
+  <button class='login-btn' wx:if="{{!hasUserInfo}}"  open-type="getUserInfo" bindgetuserinfo="getUserInfo"><text class='cuIcon-emoji'></text></button>
     <text wx:if="{{!hasUserInfo}}"  class="text-highlight2 vertical" > 点击登入 </text> 
         <image wx:if="{{hasUserInfo}}"  class='avatar vertical' src='{{userInfo.avatarUrl}}'></image>
         <text wx:if="{{hasUserInfo}}"  class="text-highlight2 vertical" > Hi, </text> 

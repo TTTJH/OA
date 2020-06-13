@@ -6,39 +6,44 @@
 
       <view bindtap='sign' class="sign-box bg-gradual-blue padding radius shadow-blur text-center">
     <text wx:if="{{!signing}}" class="cuIcon-activity sign-icon margin-top-sm  text-white icon-lg-size"></text>
-    <view wx:if="{{!signing}}"  class="text-lg margin-top-sm" >点击签到</view>
+      <view  wx:if="{{code}}" class='activity-tip text-lg margin-top-sm'>
+        活动签到!
+      </view>
+    <view wx:if="{{!signing && !code}}"  class="text-lg margin-top-sm" >点击签到</view>
     <view  class="loading-tip cu-load  {{signing?'loading':''}}"></view>
       </view>
 
   <view class="other-sign-box1 bg-gradual-blue padding radius shadow-blur text-center">
-      <text class="cuIcon-creative sign-icon margin-top-sm  text-white icon-lg-size"></text>
-    <view  class="text-lg margin-top-sm " >TJH已签到</view>
+      <!-- <text class="cuIcon-creative sign-icon margin-top-sm  text-white icon-lg-size"></text> -->
+    <!-- <view  class="text-lg margin-top-sm " >TJH已签到</view> -->
+    <view class='signed-box' wx:if="{{signed}}">
+      <image wx:if="{{signed}}" src="{{signed[0].avater}}"></image>
+      <view wx:if="{{signed}}">{{signed[0].name}}已签!</view>
+    </view>
     </view>
 
       <view class="other-sign-box2 bg-gradual-blue padding radius shadow-blur text-center">
-      <text class="cuIcon-creative sign-icon margin-top-sm  text-white icon-lg-size"></text>
-    <view  class="text-lg margin-top-sm " >TJH已签到</view>
+      <!-- <text class="cuIcon-creative sign-icon margin-top-sm  text-white icon-lg-size"></text> -->
+    <!-- <view  class="text-lg margin-top-sm " >TJH已签到</view> -->
     </view>
 
       <view class="other-sign-box3 bg-gradual-blue padding radius shadow-blur text-center">
-      <text class="cuIcon-creative sign-icon margin-top-sm  text-white icon-lg-size"></text>
-    <view  class="text-lg margin-top-sm " >TJH已签到</view>
+      <!-- <text class="cuIcon-creative sign-icon margin-top-sm  text-white icon-lg-size"></text> -->
+    <!-- <view  class="text-lg margin-top-sm " >TJH已签到</view> -->
     </view>
 
       <view class="other-sign-box4 bg-gradual-blue padding radius shadow-blur text-center">
-      <text class="cuIcon-creative sign-icon margin-top-sm  text-white icon-lg-size"></text>
-    <view  class=" margin-top-sm " >TJH已签到</view>
+      <!-- <text class="cuIcon-creative sign-icon margin-top-sm  text-white icon-lg-size"></text> -->
+    <!-- <view  class=" margin-top-sm " >TJH已签到</view> -->
     </view>
 
       <view class="other-sign-box5 bg-gradual-blue padding radius shadow-blur text-center">
-      <text class="cuIcon-creative sign-icon margin-top-sm  text-white icon-sm-size"></text>
-    <view  class="text-lg margin-top-sm " >TJH已签到</view>
+      <!-- <text class="cuIcon-creative sign-icon margin-top-sm  text-white icon-sm-size"></text> -->
+    <!-- <view  class="text-lg margin-top-sm " >TJH已签到</view> -->
     </view>
 
 <view class='bottom-box'>
-      <view bindtap='goto' wx:if="{{code}}" class='activity-tip'>
-        活动签到!
-      </view>
+
       <view class="sign-tip bg-gradual-blue padding radius shadow-blur text-center">
     <text class="cuIcon-activity    text-white icon-lg-size"></text>
     <text  class="" >当前签到用于记录于实验室学习时长</text>

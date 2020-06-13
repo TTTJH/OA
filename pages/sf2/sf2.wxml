@@ -1,7 +1,7 @@
 <cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
 <view slot="content">
 <text class='cuIcon-activity'></text>
-发起活动签到
+活动签到
 </view>
 </cu-custom>
 <view class='container'>
@@ -53,7 +53,7 @@
 
 
     <view class='sf-txt-box'>
-      <view class='sf-txt1'>活动签到持续时间为5分钟</view>
+      <view class='sf-txt1'>活动签到持续时间由管理员设置</view>
       <view class='sf-txt2'>管理员可发布无密码签到</view>
     </view>
 

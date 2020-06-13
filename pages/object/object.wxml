@@ -5,6 +5,8 @@
 </view>
 </cu-custom>
 
+
+
 <!-- <view class='clearfix object-box bg-gradual-blue text-center'>
   <view class='object-box-arrow'>
   <text class='cuIcon-refresharrow'></text>
@@ -101,11 +103,14 @@
       <view  class='item-title'   wx:if="{{item.flag}}">
         <text class='cuIcon-file' ></text>  项目文件
       </view>
+      <view wx:if="{{!item.filesInfo && item.flag}}" class='small-loading-box'>
+      <text class='small-loading cuIcon-icloading'></text>
+      </view>
       <view bindtap='fileDownload' data-format="{{item.format}}" data-url="{{item.url}}" wx:for="{{item.filesInfo}}" class="object-file-box ">
         <image class= src='/images/{{item.format}}.png'></image>
         <text class='object-file-name text-black'>{{item.name}}</text>
       </view>
-      <view class='add-file-btn' bindtap='addFile'>
+      <view class='add-file-btn' bindtap='addFile' wx:if="{{item.filesInfo}}" data-index="{{index}}">
                     <text class='cuIcon-add'></text>
       </view>
 
@@ -114,16 +119,22 @@
       <view class='item-title'  wx:if="{{item.flag}}">
         <text class='cuIcon-friend '></text>  参与成员
       </view>
-
+      <view wx:if="{{!item.membersInfo && item.flag}}" class='small-loading-box'>
+      <text class='small-loading cuIcon-icloading'></text>
+      </view>
       <scroll-view wx:if="{{item.userList}}" class='member-list-box' scroll-x="true">
 <!-- <view  class='member-list'> -->
+        <view class='nothing-tip' wx:if="{{users.length==0}}" >无剩余成员可添加</view>
+
       <view bindtap='userChoose' data-index="{{index}}" class="user-box {{item.choose ? 'user-box-choose' : ''}}" wx:for="{{users}}">
         <view class='dot' wx:if="{{item.choose}}"></view>
         <image  src="{{item.avater}}"></image>
           <text>{{item.name}}</text>
       </view>
-        <button class="cu-btn block bg-blue margin-tb-sm lg"  catchtap='addMemberBtn'>
-    <text class="cuIcon-loading2 iconfont-spin"></text> 加载</button>
+        <button class="addMemberBtn cu-btn block bg-blue margin-tb-sm lg"  catchtap='addMemberBtn' data-index="{{index}}">
+    <text wx:if="{{addingMember}}" class="cuIcon-loading2 iconfont-spin"></text>
+    <text wx:if="{{!addingMember}}">添加</text>
+      </button>
       <!-- </view> -->
       </scroll-view>
       
@@ -137,7 +148,7 @@
                       <image src='http://139.9.115.248/imgs/gif.gif'></image>
             <image src='http://139.9.115.248/imgs/gif.gif'></image> -->
             <image wx:for="{{item.membersInfo}}" src='{{item.avater}}'></image>
-            <view class='add-member-btn' bindtap='addMember' data-index="{{index}}">
+            <view class='add-member-btn' bindtap='addMember' data-index="{{index}}" wx:if="{{item.membersInfo}}">
               <text class='cuIcon-add'></text>
             </view>
 </view>
@@ -146,14 +157,21 @@
       <view  class='item-title'   wx:if="{{item.flag}}">
         <text class='cuIcon-time ' ></text>  项目日志
       </view>
-
+      <view wx:if="{{!item.logs && item.flag}}" class='small-loading-box'>
+      <text class='small-loading cuIcon-icloading'></text>
+      </view>
     <view class="logs-Box {{item.flag?'logs-Box-show':'logs-Box-hide'}}">
     <!-- <view wx:for="{{item.logs}}" class='logs-box'> -->
-    		<textarea class='logs-textarea' maxlength="-1" disabled="{{modalName!=null}}" bindinput="logChange" placeholder="多行文本输入框"> </textarea>
+    <view class='logs-add-box' wx:if="{{item.textareaStatus}}">
+        		<textarea class='logs-textarea' maxlength="-1" disabled="{{modalName!=null}}" bindinput="logChange" placeholder="多行文本输入框"> </textarea>
          <button class="cu-btn block bg-blue margin-tb-sm lg" bindtap='addLog'>
-    <text class="cuIcon-loading2 iconfont-spin"></text> 加载</button>
+    <text wx:if="{{addLogsIng}}" class="cuIcon-loading2 iconfont-spin"></text> 
+    <text wx:if="{{!addLogsIng}}">添加</text>
+    </button>
+    </view>
+
     <view class='logs-box'>
-                <view class="logs-line-circle-add">
+                <view class="logs-line-circle-add" catchtap='addLogCircle' data-index="{{index}}">
                   <text class='cuIcon-add'></text>
             </view>
     </view>
@@ -164,7 +182,7 @@
             <view class="{{index%2==0?'logs-content-box':'logs-content-box-right'}}">
               {{item.log}}
 
-              <view class='logs-time'>{{item.time}}</view>
+              <view class='logs-time'>{{item.createTime}}</view>
               <view class="{{index%2==0?'logs-content-arrow':'logs-content-arrow-right'}}">
               </view>
             </view>
@@ -177,4 +195,7 @@
 
     </view>
 
+</view>
+<view class='tip'  wx:if="{{tip}}">
+<text class='icon cuIcon-roundcheck'></text>  {{tip}}
 </view>

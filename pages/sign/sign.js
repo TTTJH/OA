@@ -1,49 +1,68 @@
+let utils = require("../../utils/util.js")
 Page({
   data:{
     signing:false,
-    code:""
+    code:"",
+    signed:[]
   },
   sign:function(){
+    let that = this
     let token = wx.getStorageSync('token')
-    wx.request({
-      url: 'http://nothing.natapp1.cc/sign/in', //url
-      method: 'POST', //请求方式
-      header: {
-        'content-type': 'application/json',
-        'nothing-token': token
-      },
-      data: {
-        id: 8,
+    let userStorage = wx.getStorageSync('userData')
+    if(this.data.code){
+      //如果当前为活动签到
+      wx.navigateTo({
+        url: '/pages/sf2/sf2',
+      })
+    }else{
+      wx.request({
+        url: 'http://nothing.natapp1.cc/sign/in', //url
+        method: 'POST', //请求方式
+        header: {
+          'content-type': 'application/json',
+          'nothing-token': token
+        },
+        data: {
+          id: userStorage.id,
+        },
+        success: function (res) {
+          if (res.data.data.error) {
+            utils.judgeToken(res.data.data.error)
+          } else {
+            console.log("sign");
+            console.log(res);
+            that.setData({
+              signing: true,
+            })
+            wx.navigateTo({
+              url: '/pages/index/index?tip=1',
+            })
+          }
+        },
+        fail: function () {
+          console.log(":)");
+        },
+        complete: function () {
+          // complete 
+        }
+      })
+    }
 
-      },
-      success: function (res) {
-        console.log("sign");
-        console.log(res);
-      },
-      fail: function () {
-        console.log(":)");
-      },
-      complete: function () {
-        // complete 
-      }
-    })
 
-    // 获取用户位置
-    wx.getLocation({
-      success: function (res) {
-        console.log('res', res)
-        // latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
-        // longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
-        // var speed = res.speed; // 速度，以米/每秒计
-        // var accuracy = res.accuracy; // 位置精度
-      },
-      fail: function (res) {
-        //alert("获取位置失败");
-      }
-    });
-    this.setData({
-      signing:true,
-    })
+    // // 获取用户位置
+    // wx.getLocation({
+    //   success: function (res) {
+    //     console.log('res', res)
+    //     // latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+    //     // longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+    //     // var speed = res.speed; // 速度，以米/每秒计
+    //     // var accuracy = res.accuracy; // 位置精度
+    //   },
+    //   fail: function (res) {
+    //     //alert("获取位置失败");
+    //   }
+    // });
+
   },
   goto:function(){
     wx.navigateTo({
@@ -62,14 +81,17 @@ Page({
       },
       success(res){
         console.log(res)
-        if (res.data.data.code){
-          //开启了活动签到
-          let { code } = res.data.data
-          that.setData({
-            code
-          })
+        if (res.data.data.error) {
+          utils.judgeToken(res.data.data.error)
+        } else {
+          if (res.data.data.code) {
+            //开启了活动签到
+            let { code } = res.data.data
+            that.setData({
+              code
+            })
+          }
         }
-
       },
       fail(res){
         console.log(res)
@@ -84,7 +106,10 @@ Page({
       },
       success(res) {
         console.log(res)
-
+        //设置已经活动签到的人
+        that.setData({
+          signed:res.data.data.users
+        })
       },
       fail(res) {
         console.log(res)

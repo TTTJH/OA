@@ -8,7 +8,26 @@
   border-radius: 50%;
   padding-top: 75rpx;
   z-index: 100;
+  overflow: hidden;
 }
+.signed-box{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-50%,0);
+}
+
+.signed-box image{
+  width: 20vw;
+  height: 20vw;
+  border-radius: 50%;
+}
+
+.signed-box view{
+  color: #69606b;
+  text-align: center;
+}
+
 
 .other-sign-box1,
 .other-sign-box2,
@@ -84,7 +103,7 @@ background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
   bottom: 5vh;
 }
 .activity-tip{
-  text-align: center;
+  /* text-align: center;
     border-radius: 50rpx;
   width: 30vw;
   height: 6vh;
@@ -92,7 +111,7 @@ background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
   color: white;
   margin: 10rpx auto;
   box-shadow: 0 0 30rpx  #4481eb;
-background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);
+background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%); */
 }
 
 .sign-tip{
