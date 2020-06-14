@@ -112,7 +112,7 @@ Page({
     let id = this.data.items[index].id
     let token = wx.getStorageSync('token')
     wx.request({
-      url: `http://nothing.natapp1.cc/item/go/${id}`, //id为0,获取全部项目
+      url: `https://www.tttjh.com.cn/item/go/${id}`, //id为0,获取全部项目
       method: "GET",
       header: {
         'content-type': 'application/json',
@@ -130,6 +130,23 @@ Page({
         let items = that.data.items;
         items[index].membersInfo = res.data.data.memebers;
         items[index].logs = res.data.data.logs;
+        console.log(items[index].logs)
+        if(!items[index].logs){
+          //当前没有logs
+          items[index].logs = [
+            {
+               createTime: items[index].createTime,
+               log: "HelloWorld",
+            }
+          ]
+        }else{
+        items[index].logs.unshift(     
+             {
+               createTime: items[index].createTime,
+               log: "HelloWorld",
+             })
+        }
+
         //模拟log
         // let logs = [
         //   {
@@ -217,7 +234,7 @@ Page({
     let that = this;
     let token = wx.getStorageSync('token')
     wx.request({
-      url: 'http://nothing.natapp1.cc/item/go/0', //id为0,获取全部项目
+      url: 'https://www.tttjh.com.cn/item/go/0', //id为0,获取全部项目
       method: 'GET', //请求方式
       header: {
         'content-type': 'application/json',
@@ -286,7 +303,7 @@ Page({
     //避免多次请求
     // if(!this.data.users.length){
       wx.request({
-        url: 'http://nothing.natapp1.cc/user/list',
+        url: 'https://www.tttjh.com.cn/user/list',
         method: 'GET',
         header: {
           'content-type': 'application/json',
@@ -348,11 +365,12 @@ Page({
     })
     console.log(uids)
     wx.request({
-      url: 'http://nothing.natapp1.cc/item/go',
+      url: 'https://www.tttjh.com.cn/item/go',
       method: "PUT",
       data: {
         uids,
-        id:this.data.id
+        id:this.data.id,
+        members:this.data.users.length + 1
       },
       header: {
         'content-type': 'application/json',
@@ -402,7 +420,7 @@ Page({
         console.log(that.data.files)
         let token = wx.getStorageSync('token')
         wx.uploadFile({
-          url: `http://nothing.natapp1.cc/file/upload/${that.data.itemName}/${that.data.files.name}`,
+          url: `https://www.tttjh.com.cn/file/upload/${that.data.itemName}/${that.data.files.name}`,
           filePath: that.data.files.path,
           name: 'file',
           formData: {
@@ -418,14 +436,15 @@ Page({
             console.log(obj.data.url)
             let fileUrls = [obj.data.url]
               wx.request({
-                url: 'http://nothing.natapp1.cc/item/go',
+                url: 'https://www.tttjh.com.cn/item/go',
                 method: "put",
                 header: {
                   'nothing-token': token
                 },
                 data: {
                   id: that.data.id,
-                  fileUrls
+                  fileUrls,
+                  files:that.data.items[index].filesInfo.length + 1
                 },
                 success(res) {
                   console.log(res)
@@ -477,15 +496,16 @@ Page({
       items
     })
   },
-  addLog:function(){
+  addLog:function(e){
     this.setData({
       addLogsIng:true
     })
+    let {index} = e.currentTarget.dataset
     let that = this
     let token = wx.getStorageSync('token')
     console.log(this.data.textarea)
     wx.request({
-      url: 'http://nothing.natapp1.cc/item/go',
+      url: 'https://www.tttjh.com.cn/item/go',
       method: "PUT",
       data: {
         log:this.data.textarea,
@@ -502,9 +522,13 @@ Page({
           :
           console.log("nothing")
         console.log(res)
+        let {items} = that.data
+        items[index].textareaStatus = false
         that.setData({
           addLogsIng: false,
-          tip:"添加成功!"
+          tip:"添加成功!",
+          textarea:"",
+          items
         })
       },
       fail(res) {

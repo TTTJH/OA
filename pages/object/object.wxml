@@ -164,7 +164,7 @@
     <!-- <view wx:for="{{item.logs}}" class='logs-box'> -->
     <view class='logs-add-box' wx:if="{{item.textareaStatus}}">
         		<textarea class='logs-textarea' maxlength="-1" disabled="{{modalName!=null}}" bindinput="logChange" placeholder="多行文本输入框"> </textarea>
-         <button class="cu-btn block bg-blue margin-tb-sm lg" bindtap='addLog'>
+         <button data-index="{{index}}" class="cu-btn block bg-blue margin-tb-sm lg" bindtap='addLog'>
     <text wx:if="{{addLogsIng}}" class="cuIcon-loading2 iconfont-spin"></text> 
     <text wx:if="{{!addLogsIng}}">添加</text>
     </button>
@@ -176,9 +176,9 @@
             </view>
     </view>
       <view wx:for="{{item.logs}}" class="{{index%2==0?'logs-box':'logs-box-right'}}">
-            <view class="{{index%2==0?'logs-line-circle':'logs-line-circle-right'}}">
+            <!-- <view class="{{index%2==0?'logs-line-circle':'logs-line-circle-right'}}">
 
-            </view>
+            </view> -->
             <view class="{{index%2==0?'logs-content-box':'logs-content-box-right'}}">
               {{item.log}}
 

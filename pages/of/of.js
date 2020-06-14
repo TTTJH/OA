@@ -79,99 +79,103 @@ Page({
       let filesLength = this.data.files.length
       console.log(token)
       //循环提交files
-      this.data.files.forEach((item, index2) => {
-        wx.uploadFile({
-          url: `http://nothing.natapp1.cc/file/upload/${this.data.itemName}/${item.name}`,
-          filePath: item.path,
-          name: 'file',
-          formData: {
-            // 'user': 'test'
-          },
-          header: {
-            'nothing-token': token
-          },
-          success(res) {
-            console.log(res)
-            //更新filesName
-            // let promise = new Promise((resolve,reject) => {
-              let {filesName} = that.data 
-              let resp = JSON.parse(res.data)
-              filesName.push(resp.data.url)
+      if(this.data.files){
+        this.data.files.forEach((item, index2) => {
+          wx.uploadFile({
+            url: `https://www.tttjh.com.cn/file/upload/${this.data.itemName}/${item.name}`,
+            filePath: item.path,
+            name: 'file',
+            formData: {
+              // 'user': 'test'
+            },
+            header: {
+              'nothing-token': token
+            },
+            success(res) {
+              console.log(res)
+              //更新filesName
+              // let promise = new Promise((resolve,reject) => {
+                let {filesName} = that.data 
+                let resp = JSON.parse(res.data)
+                filesName.push(resp.data.url)
+                that.setData({
+                  filesName
+                })
+                console.log(filesName)
+                // resolve(filesName)
+              // })
+              // promise.then((value) => {
+                if (that.data.index == filesLength - 1) {
+                  // console.log(value)
+                  //当前是最后一次循环,在这里发起使用filesName的请求
+                  let uids = []
+                  that.data.users.forEach((item, index) => {
+                    if (item.choose) {
+                      uids.push(item.id)
+                      that.setData({
+                        uids
+                      })
+                    }
+                  })
+  
+                  console.log(that.data)
+                  //提交uids和name和fileUrls
+                  wx.request({
+                    url: 'https://www.tttjh.com.cn/item/go',
+                    method: "POST",
+                    header: {
+                      'nothing-token': token
+                    },
+                    data: {
+                      uids: that.data.uids,
+                      url: "xxx",
+                      fileUrls: filesName,
+                      name: that.data.itemName,
+                      members: that.data.uids.length,
+                      days: 1,
+                      files:that.data.files.length
+                    },
+                    success(res) {
+                      console.log(res)
+                      wx.navigateTo({
+                        url: '/pages/index/index?tip=5',
+                      })
+                    },
+                    fail() {
+                      console.log("LKJJJ")
+                    }
+                  })
+                }
+              // })
+  
+  
+  
+  
+              //  console.log(res)
+              //do something
+              // console.log(res.data)
+              // console.log(typeof res.data)
+  
+              //更新index
+              let { index } = that.data
+              index++
               that.setData({
-                filesName
+                index
               })
-              console.log(filesName)
-              // resolve(filesName)
-            // })
-            // promise.then((value) => {
-              if (that.data.index == filesLength - 1) {
-                // console.log(value)
-                //当前是最后一次循环,在这里发起使用filesName的请求
-                let uids = []
-                that.data.users.forEach((item, index) => {
-                  if (item.choose) {
-                    uids.push(item.id)
-                    that.setData({
-                      uids
-                    })
-                  }
-                })
-
-                console.log(that.data)
-                //提交uids和name和fileUrls
-                wx.request({
-                  url: 'http://nothing.natapp1.cc/item/go',
-                  method: "POST",
-                  header: {
-                    'nothing-token': token
-                  },
-                  data: {
-                    uids: that.data.uids,
-                    url: "xxx",
-                    fileUrls: filesName,
-                    name: that.data.itemName,
-                    members: that.data.uids.length,
-                    days: 1
-                  },
-                  success(res) {
-                    console.log(res)
-                    wx.navigateTo({
-                      url: '/pages/index/index?tip=5',
-                    })
-                  },
-                  fail() {
-                    console.log("LKJJJ")
-                  }
-                })
-              }
-            // })
-
-
-
-
-            //  console.log(res)
-            //do something
-            // console.log(res.data)
-            // console.log(typeof res.data)
-
-            //更新index
-            let { index } = that.data
-            index++
-            that.setData({
-              index
-            })
-          },
-          fail() {
-            console.log(":(")
-            //更新index
-            let { index } = that.data
-            index++
-            that.setData({
-              index
-            })
-          }
+            },
+            fail() {
+              console.log(":(")
+              //更新index
+              let { index } = that.data
+              index++
+              that.setData({
+                index
+              })
+            }
+          })
         })
-      })
+      }
+
     }
   },
   uploadItem:function(){
@@ -225,7 +229,7 @@ Page({
     let that = this;
     let token = wx.getStorageSync('token')
     wx.request({
-      url: 'http://nothing.natapp1.cc/user/list',
+      url: 'https://www.tttjh.com.cn/user/list',
       method: 'GET',
       header: {
         'content-type': 'application/json',

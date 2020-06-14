@@ -3,7 +3,15 @@ Page({
   data:{
     signing:false,
     code:"",
-    signed:[]
+    signed:[],
+    otherBox:[
+      "other-sign-box1",
+      "other-sign-box2",
+      "other-sign-box3",
+      "other-sign-box4",
+      "other-sign-box5",
+      "other-sign-box6"
+    ]
   },
   sign:function(){
     let that = this
@@ -16,7 +24,7 @@ Page({
       })
     }else{
       wx.request({
-        url: 'http://nothing.natapp1.cc/sign/in', //url
+        url: 'https://www.tttjh.com.cn/sign/in', //url
         method: 'POST', //请求方式
         header: {
           'content-type': 'application/json',
@@ -73,7 +81,7 @@ Page({
     let token = wx.getStorageSync('token')
     let that = this
     wx.request({
-      url: 'http://nothing.natapp1.cc/sign/hascode', //url
+      url: 'https://www.tttjh.com.cn/sign/hascode', //url
       method: 'get', //请求方式
       header: {
         'content-type': 'application/json',
@@ -98,7 +106,7 @@ Page({
       }
     })
     wx.request({
-      url: 'http://nothing.natapp1.cc/sign/signed', //url
+      url: 'https://www.tttjh.com.cn/sign/signed', //url
       method: 'get', //请求方式
       header: {
         'content-type': 'application/json',
@@ -107,6 +115,12 @@ Page({
       success(res) {
         console.log(res)
         //设置已经活动签到的人
+        res.data.data.users.forEach((item,index) => {
+          let num1 = Math.random() * (70 - 0)
+          let num2 = Math.random() * (70 - 0)
+          item.left = num1
+          item.top = num2
+        })
         that.setData({
           signed:res.data.data.users
         })

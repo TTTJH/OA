@@ -13,18 +13,11 @@
     <view  class="loading-tip cu-load  {{signing?'loading':''}}"></view>
       </view>
 
-  <view class="other-sign-box1 bg-gradual-blue padding radius shadow-blur text-center">
-      <!-- <text class="cuIcon-creative sign-icon margin-top-sm  text-white icon-lg-size"></text> -->
-    <!-- <view  class="text-lg margin-top-sm " >TJH已签到</view> -->
-    <view class='signed-box' wx:if="{{signed}}">
-      <image wx:if="{{signed}}" src="{{signed[0].avater}}"></image>
-      <view wx:if="{{signed}}">{{signed[0].name}}已签!</view>
-    </view>
-    </view>
+       <view class="other-sign-box1 bg-gradual-blue padding radius shadow-blur text-center">
 
-      <view class="other-sign-box2 bg-gradual-blue padding radius shadow-blur text-center">
-      <!-- <text class="cuIcon-creative sign-icon margin-top-sm  text-white icon-lg-size"></text> -->
-    <!-- <view  class="text-lg margin-top-sm " >TJH已签到</view> -->
+    </view>
+       <view class="other-sign-box2 bg-gradual-blue padding radius shadow-blur text-center">
+
     </view>
 
       <view class="other-sign-box3 bg-gradual-blue padding radius shadow-blur text-center">
@@ -40,7 +33,16 @@
       <view class="other-sign-box5 bg-gradual-blue padding radius shadow-blur text-center">
       <!-- <text class="cuIcon-creative sign-icon margin-top-sm  text-white icon-sm-size"></text> -->
     <!-- <view  class="text-lg margin-top-sm " >TJH已签到</view> -->
+    </view> 
+
+  <view wx:for="{{signed}}" style="left:{{item.left + 'vw'}};top:{{item.top + 'vh'}}" class="{{otherBox[index]}} bg-gradual-blue padding radius shadow-blur text-center">
+    <view class='signed-box' >
+      <image  src="{{item.avater}}"></image>
+      <view>{{item.name}}已签!</view>
     </view>
+    </view>
+
+   
 
 <view class='bottom-box'>
 

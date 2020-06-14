@@ -4,7 +4,7 @@
 公告栏
 </view>
 </cu-custom>
-<view  wx:if="{{loading}}" class='loading-box'>
+<view  wx:if="{{loading && app.userInfo}}" class='loading-box'>
 <image class='loading-btn' src='/images/loading.png'></image>
 <view>加载中...</view>
 </view>

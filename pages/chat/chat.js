@@ -15,7 +15,7 @@
 //     let that = this
 //     let token = wx.getStorageSync('token')
 //     wx.request({
-//       url: 'http://nothing.natapp1.cc/notice/go',
+//       url: 'https://www.tttjh.com.cn/notice/go',
 //       method: "GET",
 //       header: {
 //         'content-type': 'application/json',
@@ -165,7 +165,7 @@ Component({
       let that = this
       let token = wx.getStorageSync('token')
       wx.request({
-        url: 'http://nothing.natapp1.cc/notice/go',
+        url: 'https://www.tttjh.com.cn/notice/go',
         method: "GET",
         header: {
           'content-type': 'application/json',

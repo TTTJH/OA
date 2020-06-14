@@ -23,7 +23,7 @@ Page({
     if (e.currentTarget.dataset.index){
    //删除请求在这里
         wx.request({
-      url: `http://nothing.natapp1.cc/user/${this.data.users[index].id}`,
+      url: `https://www.tttjh.com.cn/user/${this.data.users[index].id}`,
       method: 'DELETE',
       header: {
         'content-type': 'application/json',
@@ -75,7 +75,7 @@ Page({
     let token = wx.getStorageSync('token')
     console.log(token)
     wx.request({
-      url: 'http://nothing.natapp1.cc/user/list',
+      url: 'https://www.tttjh.com.cn/user/list',
       method:'GET',
       header: {
         'content-type': 'application/json',

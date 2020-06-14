@@ -103,7 +103,7 @@ Page({
     })
     //提交
     wx.request({
-      url: 'http://nothing.natapp1.cc/user', //url
+      url: 'https://www.tttjh.com.cn/user', //url
       method: 'PUT', //请求方式
       // header: {
       //   'Content-Type': 'application/json',

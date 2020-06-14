@@ -46,7 +46,7 @@ Page({
     // console.log(id)
     // console.log(code)
     wx.request({
-      url: 'http://nothing.natapp1.cc/sign/in',
+      url: 'https://www.tttjh.com.cn/sign/in',
       method: "POST",
       header: {
         'content-type': 'application/json',

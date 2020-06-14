@@ -330,6 +330,7 @@ border-radius:20rpx
   display: inline-block;
 }
 .logs-add-box button{
+z-index: 500;
 position:absolute;
 width:25%;
 bottom:30rpx;

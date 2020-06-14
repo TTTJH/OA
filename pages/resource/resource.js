@@ -55,7 +55,7 @@ Page({
     let that = this
     let token = wx.getStorageSync('token')
     wx.request({
-      url: 'http://nothing.natapp1.cc/resource/go',
+      url: 'https://www.tttjh.com.cn/resource/go',
       method: "get",
       header: {
         'content-type': 'application/json',

@@ -48,7 +48,7 @@ Page({
             console.log(typeof decodedString);
             let token = wx.getStorageSync('token')
             wx.request({
-              url: 'http://nothing.natapp1.cc/resource/go',
+              url: 'https://www.tttjh.com.cn/resource/go',
               method: "POST",
               header: {
                 'content-type': 'application/json',
@@ -78,7 +78,7 @@ Page({
   uploadItem(){
     //先往后端传一个文件名,得到putUrl传送url
     wx.request({
-      url: 'http://nothing.natapp1.cc/file/put/xxx',
+      url: 'https://www.tttjh.com.cn/file/put/xxx',
       method:"get",
       header: {
             'Content-Type': 'application/octet-stream',
@@ -243,7 +243,7 @@ Page({
     var that = this;
 
     wx.request({
-      url: 'http://nothing.natapp1.cc/file/put/test', //url
+      url: 'https://www.tttjh.com.cn/file/put/test', //url
       method: 'GET', //请求方式
       // header: {
       //   'Content-Type': 'application/json',

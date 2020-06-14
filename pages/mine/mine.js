@@ -13,9 +13,9 @@ Component({
       { icon: "cuIcon-favor", txt: "收藏" },
       { icon: "cuIcon-discover", txt: "探索发现" },
       { icon: "cuIcon-selection", txt: "勋章墙" },
-      { icon: "cuIcon-mark", txt: "留言" },
-      { icon: "cuIcon-github", txt: "github" },
-      { icon: "cuIcon-settingsfill", txt: "设置" },
+      // { icon: "cuIcon-mark", txt: "留言" },
+      // { icon: "cuIcon-github", txt: "github" },
+      // { icon: "cuIcon-settingsfill", txt: "设置" },
     ],
     gotoList: [
       '/pages/form/form',
@@ -51,7 +51,7 @@ Component({
           let obj = wx.getStorageSync("loginData")
               console.log(obj)
               wx.request({
-                url: 'http://nothing.natapp1.cc/wx/login',
+                url: 'https://www.tttjh.com.cn/wx/login',
                 method: 'POST',
                 data: {
                   code: obj.code,
@@ -67,7 +67,7 @@ Component({
                   let userStorage = wx.getStorageSync('userData')
                   let token = wx.getStorageSync('token')
                   wx.request({
-                    url: `http://nothing.natapp1.cc/user/info/${userStorage.id}`,
+                    url: `https://www.tttjh.com.cn/user/info/${userStorage.id}`,
                     method: 'GET',
                     header: {
                       'content-type': 'application/json',
@@ -108,7 +108,7 @@ Component({
               wx.setStorageSync("loginData", obj);
               // let obj = wx.getStorageSync(obj)
               wx.request({
-                url: 'http://nothing.natapp1.cc/wx/login',
+                url: 'https://www.tttjh.com.cn/wx/login',
                 method: 'POST',
                 data: {
                   code: obj.code,
@@ -124,7 +124,7 @@ Component({
                   let userStorage = wx.getStorageSync('userData')
                   let token = wx.getStorageSync('token')
                   wx.request({
-                    url: `http://nothing.natapp1.cc/user/info/${userStorage.id}`,
+                    url: `https://www.tttjh.com.cn/user/info/${userStorage.id}`,
                     method: 'GET',
                     header: {
                       'content-type': 'application/json',

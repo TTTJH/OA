@@ -52,7 +52,7 @@ Page({
     console.log(id)
     console.log(code)
     wx.request({
-      url: 'http://nothing.natapp1.cc/sign/activity',
+      url: 'https://www.tttjh.com.cn/sign/activity',
       method:"POST",
       header: {
         'content-type': 'application/json',

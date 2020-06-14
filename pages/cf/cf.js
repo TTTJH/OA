@@ -20,7 +20,7 @@ Page({
       })    
       let token = wx.getStorageSync('token')
       wx.request({
-        url: 'http://nothing.natapp1.cc/notice/go',
+        url: '/notice/go',
         method:"POST",
         header: {
           'content-type': 'application/json',
