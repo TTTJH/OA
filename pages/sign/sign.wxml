@@ -6,10 +6,10 @@
 
       <view bindtap='sign' class="sign-box bg-gradual-blue padding radius shadow-blur text-center">
     <text wx:if="{{!signing}}" class="cuIcon-activity sign-icon margin-top-sm  text-white icon-lg-size"></text>
-      <view  wx:if="{{code}}" class='activity-tip text-lg margin-top-sm'>
+      <!-- <view  wx:if="{{code}}" class='activity-tip text-lg margin-top-sm'>
         活动签到!
-      </view>
-    <view wx:if="{{!signing && !code}}"  class="text-lg margin-top-sm" >点击签到</view>
+      </view> -->
+    <view wx:if="{{!signing && !code}}"  class="text-lg margin-top-sm" >点击</view>
     <view  class="loading-tip cu-load  {{signing?'loading':''}}"></view>
       </view>
 
@@ -38,7 +38,7 @@
   <view wx:for="{{signed}}" style="left:{{item.left + 'vw'}};top:{{item.top + 'vh'}}" class="{{otherBox[index]}} bg-gradual-blue padding radius shadow-blur text-center">
     <view class='signed-box' >
       <image  src="{{item.avater}}"></image>
-      <view>{{item.name}}已签!</view>
+      <!-- <view>{{item.name}}已签!</view> -->
     </view>
     </view>
 

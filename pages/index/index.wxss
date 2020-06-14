@@ -1,3 +1,6 @@
+.opacity{
+  opacity: 0.4;
+}
 .tip{
   /* //无语 */
   z-index: 10000;

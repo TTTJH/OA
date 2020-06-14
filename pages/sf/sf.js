@@ -65,12 +65,13 @@ Page({
       },
       success(res){
         console.log(res)
-      },
-      fali(res){
-        console.log(res)
         wx.navigateTo({
           url: '/pages/index/index?tip=4',
         })
+      },
+      fali(res){
+        console.log(res)
+
       }
     })
   },

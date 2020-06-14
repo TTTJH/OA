@@ -110,7 +110,7 @@
         <image class= src='/images/{{item.format}}.png'></image>
         <text class='object-file-name text-black'>{{item.name}}</text>
       </view>
-      <view class='add-file-btn' bindtap='addFile' wx:if="{{item.filesInfo}}" data-index="{{index}}">
+      <view class='add-file-btn' bindtap='addFile' wx:if="{{item.filesInfo && userData.role==2}}" data-index="{{index}}">
                     <text class='cuIcon-add'></text>
       </view>
 
@@ -148,7 +148,7 @@
                       <image src='http://139.9.115.248/imgs/gif.gif'></image>
             <image src='http://139.9.115.248/imgs/gif.gif'></image> -->
             <image wx:for="{{item.membersInfo}}" src='{{item.avater}}'></image>
-            <view class='add-member-btn' bindtap='addMember' data-index="{{index}}" wx:if="{{item.membersInfo}}">
+            <view class='add-member-btn' bindtap='addMember' data-index="{{index}}" wx:if="{{item.membersInfo && userData.role==2}}">
               <text class='cuIcon-add'></text>
             </view>
 </view>
@@ -171,7 +171,7 @@
     </view>
 
     <view class='logs-box'>
-                <view class="logs-line-circle-add" catchtap='addLogCircle' data-index="{{index}}">
+                <view wx:if="{{userData.role==2}}" class="logs-line-circle-add" catchtap='addLogCircle' data-index="{{index}}">
                   <text class='cuIcon-add'></text>
             </view>
     </view>

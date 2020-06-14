@@ -3,6 +3,7 @@ const app = getApp()
 
 Page({
   data:{
+    userData:wx.getStorageSync('userData'),
     tip:"",
     tagStatusClass:"",
     iconStatusClass:[],
@@ -21,18 +22,21 @@ Page({
     ],
   },
   goto: function (res) {
-    console.log(this.data.gotoList[res.currentTarget.dataset.index])
     wx.navigateTo({
       url: this.data.gotoList[res.currentTarget.dataset.index]
     })
   },
   uploadResource(){
+    this.setData({
+      tip:""
+    })
     let that = this
     wx.chooseMessageFile({
       success(res) {
         console.log(res);
         // const tempFilePaths = res.tempFilePaths
         const tempFilePaths = res.tempFiles[0].path
+        let title = res.tempFiles[0].name
         //将选择好的文件转为base64格式
         wx.getFileSystemManager().readFile({
           filePath: tempFilePaths, //选择图片返回的相对路径
@@ -47,6 +51,7 @@ Page({
 
             console.log(typeof decodedString);
             let token = wx.getStorageSync('token')
+            console.log(title)
             wx.request({
               url: 'https://www.tttjh.com.cn/resource/go',
               method: "POST",
@@ -55,7 +60,8 @@ Page({
                 'nothing-token': token
               },
               data:{
-                content: decodedString
+                content: decodedString,
+                title:title
               } ,
               success(res){
                 console.log(res)
@@ -200,6 +206,18 @@ Page({
       this.setData({
         tip: "发布成功!"
       })
+    }else if(option.tip == 'resign'){
+      this.setData({
+        tip: "请勿在半小时内重复签到"
+      })
+    }else if(option.tip == 'signout'){
+      this.setData({
+        tip: "签退成功！"
+      })
+    }else if(option.tip == 'activity'){
+      this.setData({
+        tip: "活动签到成功！"
+      })
     }
     if(option.curPage){
       //如果存在,证明是utils函数跳转,需要到Mine组件处
@@ -212,6 +230,8 @@ Page({
  * 生命周期函数--监听页面初次渲染完成
  */
   onReady: function () {
+    console.log(wx.getCurrentPages())
+    console.log(wx.getStorageSync('userData'))
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

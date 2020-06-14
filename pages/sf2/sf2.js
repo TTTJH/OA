@@ -60,7 +60,7 @@ Page({
       success(res) {
         console.log(res)
         wx.navigateTo({
-          url: '/paegs/index/index?tip=2',
+          url: '/pages/index/index?tip=2',
         })
       },
       fali(res) {

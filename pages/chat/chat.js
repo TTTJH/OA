@@ -172,6 +172,7 @@ Component({
           'nothing-token': token
         },
         success(res) {
+          console.log(res)
           // console.log(res.data.data.error)
           if (res.data.data.error) {
             utils.judgeToken(res.data.data.error,"dont")
@@ -202,7 +203,7 @@ Component({
               ]
             */
             console.log(message)
-
+            message.reverse()
             let arr = []
             for (let i = 0; i < message.length - 1; i++) {
               let obj = {}

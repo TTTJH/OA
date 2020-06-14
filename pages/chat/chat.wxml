@@ -20,10 +20,16 @@
         <view class='cu-item item-padding ' wx:for="{{item.messages}}">
           <view class=" bg-blue shadow-blur content content-padding radious-sm">
             <view class="cu-capsule radius">
-              <view class="cu-tag bg-white">上午</view>
+              <!-- <view class="cu-tag bg-white" wx:if="{{(item.time[0] + item.item[1]) * 1>12}}">
+                下午
+             </view>
+                           <view class="cu-tag bg-white" wx:if="{{(item.time[0] + item.item[1]) * 1<12}}">
+                上午
+             </view> -->
               <view class="cu-tag line-white">{{item.time}}</view>
             </view>
-            <view class="margin-top">{{item.content}}</view>
+             
+            <view class="margin-top">{{item.content}}  </view>
           </view>
         </view>
     </view>

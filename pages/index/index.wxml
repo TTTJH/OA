@@ -3,22 +3,23 @@
 <main wx:if="{{curPage=='main'}}"></main>
 <mine wx:if="{{curPage=='mine'}}"></mine> 
 <view class='tip'  wx:if="{{tip}}">
-<text class='icon cuIcon-roundcheck'></text>  {{tip}}
+<text wx:if="{{tip != '请勿在半小时内重复签到'}}" class='icon cuIcon-roundcheck'></text>
+<text wx:if="{{tip == '请勿在半小时内重复签到'}}" class='icon cuIcon-emoji'></text>  {{tip}}
 </view>
 <view class='bar-tag {{tagStatusClass}} {{hide}}' bindtap='tagChange'>
   <view class='add-Box' >
-      <view class='add-box  {{iconStatusClass[0]}} {{hide}}' bindtap='goto' data-index='0' >
-        <view class='add-icon-box add-icon-box1'>
+      <view  class="add-box  {{iconStatusClass[0]}} {{hide}} " bindtap="{{userData.role==2 ? 'goto' : ''}}" data-index='0' >
+        <view class="add-icon-box add-icon-box1 {{userData.role==2 ? '' : 'opacity'}}">
         <text class='cuIcon-activity'></text>
         </view>
-        <view>发起签到</view>
+        <view class="{{userData.role==2 ? '' : 'opacity'}}">发起签到</view>
       </view>
        <!-- bindtap='uploadItem' -->
-      <view class='add-box  {{iconStatusClass[1]}} {{hide}}' bindtap='goto' data-index='1' >
-        <view class='add-icon-box add-icon-box2' id='test'>
+      <view class='add-box  {{iconStatusClass[1]}} {{hide}}' bindtap="{{userData.role==2 ? 'goto' : ''}}"data-index='1' >
+        <view class="add-icon-box add-icon-box2  {{userData.role==2 ? '' : 'opacity'}}" id='test' >
         <text class='cuIcon-repair'></text>
         </view>
-        <view>添加项目</view>
+        <view class=" {{userData.role==2 ? '' : 'opacity'}}">添加项目</view>
       </view>
       <view class='add-box  {{iconStatusClass[2]}} {{hide}}'>
         <view class='add-icon-box add-icon-box3' bindtap='uploadResource'>
@@ -26,11 +27,11 @@
         </view>
         <view>添加资源</view>
       </view>
-      <view class='add-box  {{iconStatusClass[3]}} {{hide}}' bindtap='goto' data-index='2'>
-        <view class='add-icon-box add-icon-box4'>
+      <view class='add-box  {{iconStatusClass[3]}} {{hide}}' bindtap="{{userData.role==2 ? 'goto' : ''}}" data-index='2'>
+        <view class="add-icon-box add-icon-box4  {{userData.role==2 ? '' : 'opacity'}}">
         <text class='cuIcon-comment'></text>
         </view>
-        <view>发布公告</view>
+        <view class=" {{userData.role==2 ? '' : 'opacity'}}">发布公告</view>
       </view>
   </view>
 </view>

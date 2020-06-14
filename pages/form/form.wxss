@@ -2,6 +2,7 @@
   vertical-align:middle;
 }
 .tip-box{
+  z-index: 100;
 width:70vw;
 text-align:center;
 border-radius:20rpx;
@@ -70,8 +71,14 @@ animation-fill-mode: forwards;
   margin: 0 auto;
     border-radius: 25rpx;
 }
+.submit-btn:after{
 
- /* .circle1{
+}
+.submit-btn text{
+  line-height: 6rpx;
+}
+
+ .circle1{
   z-index: 0;
   width: 70vw;
   height: 70vw;
@@ -80,9 +87,7 @@ animation-fill-mode: forwards;
   bottom: 30px;
   border-radius: 50%;
   background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
-} */
-
-/*
+} 
 .circle2{
   z-index: 0;
   width: 70vw;
@@ -92,4 +97,4 @@ animation-fill-mode: forwards;
   top: 30px;
   border-radius: 50%;
   background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
-} */
+}

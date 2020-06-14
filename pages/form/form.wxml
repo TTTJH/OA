@@ -65,7 +65,6 @@
     <view wx:if="{{submiting}}">
     <text class="cuIcon-loading2 iconfont-spin"></text><text>提交中</text>
     </view>
-
     <text  wx:if="{{!submiting}}">
      提交
     </text>

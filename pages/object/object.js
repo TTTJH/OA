@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userData:wx.getStorageSync("userData"),
     addLogsIng:false,
       tip:"",
       loading:true,
@@ -231,6 +232,7 @@ Page({
    */
   onReady: function () {
     console.log(this.data.items);
+
     let that = this;
     let token = wx.getStorageSync('token')
     wx.request({
@@ -524,6 +526,7 @@ Page({
         console.log(res)
         let {items} = that.data
         items[index].textareaStatus = false
+        that.requestDetail(index)
         that.setData({
           addLogsIng: false,
           tip:"添加成功!",

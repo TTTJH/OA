@@ -45,7 +45,8 @@
   left: 30rpx;
   transform: translateY(-50%);
   height: 100%;
-  width: 200vw;
+  /* width: 200vw; */
+  width: 100vw;
   /* background-color: pink; */
 }
 

@@ -18,7 +18,7 @@ Page({
     let token = wx.getStorageSync('token')
     let userStorage = wx.getStorageSync('userData')
     if(this.data.code){
-      //如果当前为活动签到
+      //如果当前为有密码的活动签到
       wx.navigateTo({
         url: '/pages/sf2/sf2',
       })
@@ -39,12 +39,30 @@ Page({
           } else {
             console.log("sign");
             console.log(res);
-            that.setData({
-              signing: true,
-            })
-            wx.navigateTo({
-              url: '/pages/index/index?tip=1',
-            })
+            if(res.data.msg == "签到成功!~:)"){
+              //普通签到
+              that.setData({
+                signing: true,
+              })
+              wx.navigateTo({
+                url: '/pages/index/index?tip=1',
+              })
+            }else if(res.data.msg == "请不要再半小时内重复提交了:)"){
+              that.setData({
+                signing: true,
+              })
+              wx.navigateTo({
+                url: '/pages/index/index?tip=resign',
+              })
+            }else if(res.data.msg == "签退成功！~:)"){
+              that.setData({
+                signing: true,
+              })
+              wx.navigateTo({
+                url: '/pages/index/index?tip=signout',
+              })
+            }
+ 
           }
         },
         fail: function () {
@@ -115,15 +133,18 @@ Page({
       success(res) {
         console.log(res)
         //设置已经活动签到的人
-        res.data.data.users.forEach((item,index) => {
-          let num1 = Math.random() * (70 - 0)
-          let num2 = Math.random() * (70 - 0)
-          item.left = num1
-          item.top = num2
-        })
-        that.setData({
-          signed:res.data.data.users
-        })
+        if(res.data.data.users){
+          res.data.data.users.forEach((item,index) => {
+            let num1 = Math.random() * (70 - 0)
+            let num2 = Math.random() * (70 - 0)
+            item.left = num1
+            item.top = num2
+          })
+          that.setData({
+            signed:res.data.data.users
+          })
+        }
+
       },
       fail(res) {
         console.log(res)

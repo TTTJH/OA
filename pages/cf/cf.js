@@ -20,7 +20,7 @@ Page({
       })    
       let token = wx.getStorageSync('token')
       wx.request({
-        url: '/notice/go',
+        url: 'https://www.tttjh.com.cn/notice/go',
         method:"POST",
         header: {
           'content-type': 'application/json',
@@ -38,6 +38,10 @@ Page({
           wx.navigateTo({
             url: '/pages/index/index?tip=7',
           })
+        },
+        fail:function(res){
+          console.log(":((((")
+          console.log(res)
         }
       })
     }

@@ -1,4 +1,6 @@
 let utils = require("../../utils/util.js")
+//获取应用实例
+const app = getApp()
 Page({
   data: {
     modal:"",
@@ -48,14 +50,19 @@ Page({
  
   },
   delUser(e){
-    let {index} = e.currentTarget.dataset
-    let {users} = this.data
-    users[index].delStatus = !users[index].delStatus
+    //是否为管理员
+    let userData = wx.getStorageSync("userData")
+    if(userData.role == 2){
+      let {index} = e.currentTarget.dataset
+      let {users} = this.data
+      users[index].delStatus = !users[index].delStatus
+  
+      this.setData({
+  
+        users
+      })
+    }
 
-    this.setData({
-
-      users
-    })
   },
   del(e){
     let that = this
