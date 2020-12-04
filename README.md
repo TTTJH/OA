@@ -2,7 +2,7 @@
 
 
 * SKR~SKR~
-![des des](http://www.tttjh.com.cn/imgs/wechat1.jpg)
-![des des](http://www.tttjh.com.cn/imgs/wechat2.jpg)
-![des des](http://www.tttjh.com.cn/imgs/wechat3.jpg)
+<img src="http://www.tttjh.com.cn/imgs/wechat1.jpg" width="400px"/>
+<img src="http://www.tttjh.com.cn/imgs/wechat2.jpg" width="400px"/>
+<img src="http://www.tttjh.com.cn/imgs/wechat3.jpg" width="400px"/>
 
